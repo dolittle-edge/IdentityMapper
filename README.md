@@ -29,3 +29,9 @@ Linux / macOS
 
 ```shell
 $ Build\build.sh
+
+## Getting started
+
+This solution is built on top of [Azure IoT Edge](https://github.com/Azure/iotedge), and to be able to work locally and run it locally, you will need the development
+environment - read more about that [here](https://docs.microsoft.com/en-us/azure/iot-edge/development-environment).
+It mentions the use of the [iotedgedev](https://github.com/Azure/iotedgedev) tool.

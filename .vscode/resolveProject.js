@@ -1,0 +1,1 @@
+../Build/.vscode/resolveProject.js

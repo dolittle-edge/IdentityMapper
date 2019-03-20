@@ -1,0 +1,43 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "IdentityMapper Remote Debug (.NET Core)",
+        "type": "coreclr",
+        "request": "attach",
+        "processId": "${command:pickRemoteProcess}",
+        "pipeTransport": {
+          "pipeProgram": "docker",
+          "pipeArgs": [
+            "exec",
+            "-i",
+            "EventProducer",
+            "sh",
+            "-c"
+          ],
+          "debuggerPath": "~/vsdbg/vsdbg",
+          "pipeCwd": "${workspaceFolder}",
+          "quoteArgs": true
+        },
+        "sourceFileMap": {
+          "/app": "${workspaceFolder}/modules/IdentityMapper"
+        },
+        "justMyCode": true
+      },
+      {
+        "name": "IdentityMapper Local Debug (.NET Core)",
+        "type": "coreclr",
+        "request": "launch",
+        "program": "${workspaceRoot}/modules/IdentityMapper/bin/Debug/netcoreapp2.1/IdentityMapper.dll",
+        "args": [],
+        "cwd": "${workspaceRoot}/modules/IdentityMapper",
+        "internalConsoleOptions": "openOnSessionStart",
+        "stopAtEntry": false,
+        "console": "internalConsole",
+        "env": {
+          "EdgeHubConnectionString": "${config:azure-iot-edge.EdgeHubConnectionString}",
+          "EdgeModuleCACertificateFile": "${config:azure-iot-edge.EdgeModuleCACertificateFile}"
+        }
+      }
+    ]
+  }

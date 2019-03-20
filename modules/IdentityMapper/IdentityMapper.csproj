@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <Import Project="../../Build/MSBuild/default.props"></Import>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectCapability Include="AzureIoTEdgeModule" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dolittle.Assemblies" Version="2.*" />
+    <PackageReference Include="Dolittle.Concepts" Version="2.*" />
+    <PackageReference Include="Dolittle.Booting" Version="2.*" />
+    <PackageReference Include="Dolittle.Configuration" Version="2.*" />
+    <PackageReference Include="Dolittle.DependencyInversion" Version="2.*" />
+    <PackageReference Include="Dolittle.DependencyInversion.AutoFac" Version="2.*" />
+    <PackageReference Include="Dolittle.DependencyInversion.Booting" Version="2.*" />
+    <PackageReference Include="Dolittle.Types" Version="2.*" />
+    <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.*" />
+    <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />
+    <!--
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />-->
+    
+  </ItemGroup>
+
+</Project>
