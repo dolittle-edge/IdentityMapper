@@ -2,8 +2,7 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-
-
+using Dolittle.Collections;
 using Dolittle.Lifecycle;
 using Dolittle.Types;
 
@@ -32,8 +31,10 @@ namespace IdentityMapper
         /// <inheritdoc/>
         public void Initialize()
         {
-            //_handlers.ForEach()
-            
+            _handlers.ForEach(_ => 
+            {
+                _client.SetInputMessageHandler(_.Input, (message, context) => _.Handle(message), null);
+            });           
         }
     }
 }

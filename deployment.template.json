@@ -1,6 +1,5 @@
 {
   "$schema-template": "1.0.0",
-  
   "modulesContent": {
     "$edgeAgent": {
       "properties.desired": {
@@ -59,7 +58,13 @@
             "restartPolicy": "always",
             "settings": {
               "image": "${MODULES.IdentityMapper}",
-              "createOptions": {}
+              "createOptions": {
+                "HostConfig": {
+                  "Binds": [
+                    "/tmp/IdentityMapper:/app/data"
+                  ]
+                }
+              }
             }
           }
         }

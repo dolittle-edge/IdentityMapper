@@ -18,6 +18,8 @@
     <PackageReference Include="Dolittle.DependencyInversion" Version="2.*" />
     <PackageReference Include="Dolittle.DependencyInversion.AutoFac" Version="2.*" />
     <PackageReference Include="Dolittle.DependencyInversion.Booting" Version="2.*" />
+    <PackageReference Include="Dolittle.Serialization.Json" Version="2.*" />
+    <PackageReference Include="Dolittle.Concepts.Serialization.Json" Version="2.*" />
     <PackageReference Include="Dolittle.Types" Version="2.*" />
     <PackageReference Include="Microsoft.Azure.Devices.Client" Version="1.*" />
     <PackageReference Include="System.Runtime.Loader" Version="4.3.0" />

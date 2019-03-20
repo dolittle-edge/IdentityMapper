@@ -1,6 +1,8 @@
 FROM microsoft/dotnet:2.1-sdk AS build-env
 WORKDIR /app
 
+VOLUME [ "/app/data" ]
+
 COPY Build/MSBuild/* ./Build/MSBuild/
 COPY modules/IdentityMapper/*.csproj ./modules/IdentityMapper/
 

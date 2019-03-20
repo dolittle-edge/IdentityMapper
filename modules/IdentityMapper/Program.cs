@@ -3,6 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
+using System.IO;
 using System.Runtime.Loader;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,8 +16,10 @@ namespace IdentityMapper
     {
         static void Main(string[] args)
         {
-            while(!System.Diagnostics.Debugger.IsAttached) System.Threading.Thread.Sleep(10);
             var bootResult = Bootloader.Configure(_ => {}).Start();
+
+            Console.WriteLine(File.ReadAllText("./data/identities.json"));
+
 
             // Wait until the app unloads or is cancelled
             var cts = new CancellationTokenSource();
