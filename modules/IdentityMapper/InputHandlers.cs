@@ -16,14 +16,17 @@ namespace IdentityMapper
     public class InputHandlers : IInputHandlers
     {
         readonly IInstancesOf<ICanHandleMessages> _handlers;
+        readonly IClient _client;
 
         /// <summary>
         /// Initializes a new instance of <see cref="InputHandlers"/>
         /// </summary>
-        /// <param name="handlers"></param>
-        public InputHandlers(IInstancesOf<ICanHandleMessages> handlers)
+        /// <param name="client"><see cref="IClient"/> to use</param>
+        /// <param name="handlers"><see cref="IInstancesOf{ICanHandleMessages}">Message handlers</see></param>
+        public InputHandlers(IClient client, IInstancesOf<ICanHandleMessages> handlers)
         {
-            _handlers = handlers;
+            _client = client;
+            _handlers = handlers;           
         }
 
         /// <inheritdoc/>

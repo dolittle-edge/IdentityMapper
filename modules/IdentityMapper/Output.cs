@@ -2,18 +2,22 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+using Dolittle.Concepts;
+
 namespace IdentityMapper
 {
-
-
     /// <summary>
-    /// Defines a system that can handle all inputs
+    /// Represents the concept of an Output
     /// </summary>
-    public interface IInputHandlers
+    public class Output : ConceptAs<string>
     {
         /// <summary>
-        /// Initialize all input handlers
+        /// Implicitly convert from <see cref="string"/> to <see cref="Output"/>
         /// </summary>
-        void Initialize();
+        /// <param name="value">Output as string</param>
+        public static implicit operator Output(string value)
+        {
+            return new Output {Value = value};
+        }
     }
 }
