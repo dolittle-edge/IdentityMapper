@@ -22,15 +22,15 @@ namespace IdentityMapper
 
         readonly ISerializer _serializer;
         readonly IClient _client;
-        private readonly ITagAndSystemToTimeSeries _mapper;
+        private readonly ITimeSeriesMapper _mapper;
 
         /// <summary>
         /// Initializes a new instance of <see cref="IdentityTranslationMessageHandler"/>
         /// </summary>
         /// <param name="client"><see cref="IClient"/> to use for communication</param>
-        /// <param name="mapper"><see cref="ITagAndSystemToTimeSeries"/> for mapping</param>
+        /// <param name="mapper"><see cref="ITimeSeriesMapper"/> for mapping</param>
         /// <param name="serializer"><see cref="ISerializer">JSON serializer</see></param>
-        public IdentityTranslationMessageHandler(IClient client, ITagAndSystemToTimeSeries mapper, ISerializer serializer)
+        public IdentityTranslationMessageHandler(IClient client, ITimeSeriesMapper mapper, ISerializer serializer)
         {
             _client = client;
             _mapper = mapper;

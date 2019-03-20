@@ -7,7 +7,7 @@ namespace IdentityMapper
     /// <summary>
     /// Defines a system that can translate a tag for a specific system into a timeseries identifier
     /// </summary>
-    public interface ITagAndSystemToTimeSeries
+    public interface ITimeSeriesMapper
     {
         /// <summary>
         /// Check if there is a <see cref="TimeSeries"/> for a <see cref="Tag"/> in a <see cref="System"/>

@@ -1,3 +1,5 @@
 {
-    "Horse": "74265f94-f01e-4769-aee9-04fc369ae338"
+    "SomeSystem": {
+        "SomeTag": "74265f94-f01e-4769-aee9-04fc369ae338"
+    }
 }
