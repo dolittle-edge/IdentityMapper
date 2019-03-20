@@ -29,6 +29,7 @@ Linux / macOS
 
 ```shell
 $ Build\build.sh
+```
 
 ## Getting started
 
