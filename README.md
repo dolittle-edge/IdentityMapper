@@ -52,7 +52,7 @@ Open up the [.sln](./IdentityMapper.sln) file at the root of the project.
 
 ### Module
 
-In your `deployment.template.json` file, you will need to add the module. For more details on modules in IoT Edge, go [here](https://docs.microsoft.com/en-us/azure/iot-edge/module-composition).
+In your `deployment.json` file, you will need to add the module. For more details on modules in IoT Edge, go [here](https://docs.microsoft.com/en-us/azure/iot-edge/module-composition).
 
 ```json
 "modules": {
@@ -75,7 +75,7 @@ The module depends has persistent state and it is assuming that this is in the `
 Since this is running in a containerized environment, the state is not persistent between runs. To get this state persistent, you'll
 need to configure the deployment to mount a folder on the host into the data folder.
 
-In your `deployment.template.json` file where you added the module, inside the `HostConfig` property, you should add the
+In your `deployment.json` file where you added the module, inside the `HostConfig` property, you should add the
 volume binding.
 
 ```json
