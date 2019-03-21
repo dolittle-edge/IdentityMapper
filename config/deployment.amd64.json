@@ -37,7 +37,7 @@
             "restartPolicy": "always",
             "settings": {
               "image": "dolittle/edge-identitymapper:0.0.1-amd64",
-              "createOptions": "{\"HostConfig\":{\"Binds\":[\"/tmp/IdentityMapper:/app/data\"]}}"
+              "createOptions": "{\"HostConfig\":{}}"
             }
           }
         }
