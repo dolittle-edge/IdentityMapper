@@ -3,8 +3,7 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
-
-namespace IdentityMapper
+namespace Dolittle.Edge.IdentityMapper
 {
     /// <summary>
     /// Exception that gets thrown when a <see cref="System"/> does not exist

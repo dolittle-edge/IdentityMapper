@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using Machine.Specifications;
 using Moq;
 
-namespace IdentityMapper.for_TimeSeriesMapper.given
+namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper.given
 {
     public class an_empty_map
     {

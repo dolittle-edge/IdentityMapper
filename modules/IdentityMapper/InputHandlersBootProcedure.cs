@@ -2,10 +2,9 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-
 using Dolittle.Booting;
 
-namespace IdentityMapper
+namespace Dolittle.Edge.IdentityMapper
 {
     /// <summary>
     /// Represents a <see cref="ICanPerformBootProcedure">boot procedure</see> that initiates <see cref="IInputHandlers"/>

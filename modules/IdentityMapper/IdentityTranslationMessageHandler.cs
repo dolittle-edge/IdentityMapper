@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Dolittle.Serialization.Json;
 using Microsoft.Azure.Devices.Client;
 
-namespace IdentityMapper
+namespace Dolittle.Edge.IdentityMapper
 {
     /// <summary>
     /// Represents a <see cref="ICanHandleMessages">message handler</see> that can translate identities

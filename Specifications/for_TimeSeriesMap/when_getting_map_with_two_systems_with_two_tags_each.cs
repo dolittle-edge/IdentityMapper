@@ -14,7 +14,7 @@ using Moq;
 using Newtonsoft.Json;
 using It = Machine.Specifications.It;
 
-namespace IdentityMapper.for_TimeSeriesMap
+namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMap
 {
     public class when_getting_map_with_two_systems_with_two_tags_each
     {

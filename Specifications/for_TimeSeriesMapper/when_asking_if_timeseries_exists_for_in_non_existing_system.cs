@@ -4,12 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
-using IdentityMapper;
 using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
 
-namespace IdentityMapper.for_TimeSeriesMapper
+namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
 {
     public class when_asking_if_timeseries_exists_for_in_non_existing_system : given.an_empty_map
     {

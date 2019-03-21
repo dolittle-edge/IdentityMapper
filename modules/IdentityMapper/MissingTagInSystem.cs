@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 
-namespace IdentityMapper
+namespace Dolittle.Edge.IdentityMapper
 {
     /// <summary>
     /// Exception that gets thrown when a <see cref="Tag"/> is missing in a <see cref="System"/>

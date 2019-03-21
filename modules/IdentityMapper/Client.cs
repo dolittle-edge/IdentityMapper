@@ -8,7 +8,7 @@ using Microsoft.Azure.Devices.Client.Transport.Mqtt;
 using Dolittle.Lifecycle;
 using Dolittle.Logging;
 
-namespace IdentityMapper
+namespace Dolittle.Edge.IdentityMapper
 {
     /// <summary>
     /// Represents an implementation of <see cref="IClient"/>

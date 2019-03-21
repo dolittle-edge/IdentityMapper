@@ -5,7 +5,7 @@
 using System.Threading.Tasks;
 using Microsoft.Azure.Devices.Client;
 
-namespace IdentityMapper
+namespace Dolittle.Edge.IdentityMapper
 {
     /// <summary>
     /// Defines a client for the module

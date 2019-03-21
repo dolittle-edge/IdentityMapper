@@ -8,7 +8,7 @@ using System.Linq;
 using Dolittle.IO;
 using Dolittle.Serialization.Json;
 
-namespace IdentityMapper
+namespace Dolittle.Edge.IdentityMapper
 {
     /// <summary>
     /// Represents an implementation of <see cref="ITimeSeriesMap"/>

@@ -6,7 +6,7 @@ using Dolittle.Collections;
 using Dolittle.Lifecycle;
 using Dolittle.Types;
 
-namespace IdentityMapper
+namespace Dolittle.Edge.IdentityMapper
 {
     /// <summary>
     /// Represents an implementation of <see cref="IInputHandlers"/>

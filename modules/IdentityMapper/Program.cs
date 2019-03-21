@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Dolittle.Booting;
 
-namespace IdentityMapper
+namespace Dolittle.Edge.IdentityMapper
 {
 
     class Program

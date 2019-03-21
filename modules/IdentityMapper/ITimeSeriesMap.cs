@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using System.Collections.Generic;
 
-namespace IdentityMapper
+namespace Dolittle.Edge.IdentityMapper
 {
     /// <summary>
     /// Defines the map between <see cref="System"/> with <see cref="Tag">tags</see> and <see cref="TimeSeries"/>
