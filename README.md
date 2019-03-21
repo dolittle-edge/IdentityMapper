@@ -47,3 +47,60 @@ In addition to this there is a couple of Debug launch settings set up as well to
 ### Visual Studio 201x
 
 Open up the [.sln](./IdentityMapper.sln) file at the root of the project.
+
+## Deploying
+
+### Module
+
+In your `deployment.template.json` file, you will need to add the module. For more details on modules in IoT Edge, go [here](https://docs.microsoft.com/en-us/azure/iot-edge/module-composition).
+
+```json
+"modules": {
+    "Dolittle.Edge.IdentityMapper": {
+    "version": "1.0",
+    "type": "docker",
+    "status": "running",
+    "restartPolicy": "always",
+    "settings": {
+        "image": "dolittle/edge-identitymapper",
+        "createOptions": {
+        "HostConfig": {}
+    }
+}
+```
+
+### State
+
+The module depends has persistent state and it is assuming that this is in the `data` folder relative to where the binary is running.
+Since this is running in a containerized environment, the state is not persistent between runs. To get this state persistent, you'll
+need to configure the deployment to mount a folder on the host into the data folder.
+
+In your `deployment.template.json` file where you added the module, inside the `HostConfig` property, you should add the
+volume binding.
+
+```json
+"Binds": [
+    "/etc/Dolittle.Edge/IdentityMapper:/app/data"
+]
+```
+
+This should result in something like:
+
+```json
+"modules": {
+    "Dolittle.Edge.IdentityMapper": {
+    "version": "1.0",
+    "type": "docker",
+    "status": "running",
+    "restartPolicy": "always",
+    "settings": {
+        "image": "dolittle/edge-identitymapper",
+        "createOptions": {
+        "HostConfig": {
+            "Binds": [
+                "/etc/Dolittle.Edge/IdentityMapper:/app/data"
+            ]
+        }
+    }
+}
+```
