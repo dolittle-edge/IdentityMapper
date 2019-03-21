@@ -9,7 +9,6 @@ using Dolittle.Serialization.Json;
 
 namespace IdentityMapper
 {
-
     /// <summary>
     /// Represents an implementation of <see cref="ITimeSeriesMapper"/>
     /// </summary>
@@ -30,13 +29,27 @@ namespace IdentityMapper
         /// <inheritdoc/>
         public TimeSeries GetTimeSeriesFor(System system, Tag tag)
         {
-            throw new global::System.NotImplementedException();
+            ThrowIfMissingSystem(system);
+            ThrowIfTagIsMissingInSystem(system, tag);
+            return _map[system][tag];
         }
 
         /// <inheritdoc/>
         public bool HasTimeSeriesFor(System system, Tag tag)
         {
-            throw new global::System.NotImplementedException();
+            if( !_map.ContainsKey(system)) return false;
+            if( !_map[system].ContainsKey(tag)) return false;
+            return true;
+        }
+
+        void ThrowIfMissingSystem(System system)
+        {
+            if( !_map.ContainsKey(system)) throw new MissingSystem(system);
+        }
+
+        void ThrowIfTagIsMissingInSystem(System system, Tag tag)
+        {
+            if( !_map[system].ContainsKey(tag)) throw new MissingTagInSystem(system, tag);
         }
     }
 }
