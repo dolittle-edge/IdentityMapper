@@ -59,11 +59,7 @@
             "settings": {
               "image": "${MODULES.IdentityMapper}",
               "createOptions": {
-                "HostConfig": {
-                  "Binds": [
-                    "/tmp/IdentityMapper:/app/data"
-                  ]
-                }
+                "HostConfig": {}
               }
             }
           }
