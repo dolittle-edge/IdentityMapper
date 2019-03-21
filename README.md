@@ -80,7 +80,7 @@ volume binding.
 
 ```json
 "Binds": [
-    "/etc/Dolittle.Edge/IdentityMapper:/app/data"
+    "/etc/dolittle.edge/identitymapper:/app/data"
 ]
 ```
 
@@ -98,7 +98,7 @@ This should result in something like:
         "createOptions": {
         "HostConfig": {
             "Binds": [
-                "/etc/Dolittle.Edge/IdentityMapper:/app/data"
+                "/etc/dolittle.edge/identitymapper:/app/data"
             ]
         }
     }
