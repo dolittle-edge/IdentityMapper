@@ -14,7 +14,7 @@ namespace Dolittle.Edge.IdentityMapper
         /// <summary>
         /// Gets or sets the TimeSeries this value belong to
         /// </summary>
-        public Guid TimeSeries { get; set; }
+        public Guid DeviceId { get; set; }
 
         /// <summary>
         /// Gets or sets the value

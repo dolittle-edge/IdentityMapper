@@ -13,5 +13,6 @@
 
     <ItemGroup>
         <PackageReference Include="Dolittle.Edge.Modules" Version="1.*" />
+        <PackageReference Include="Dolittle.Configuration.Files" Version="2.*" />
     </ItemGroup>
 </Project>

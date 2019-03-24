@@ -13,16 +13,15 @@ namespace Dolittle.Edge.IdentityMapper
     /// </summary>
     public class TimeSeriesMapper : ITimeSeriesMapper
     {
-        readonly IDictionary<System, IDictionary<Tag, TimeSeries>> _map;
+        readonly TimeSeriesMap _timeSeriesMap;
 
         /// <summary>
         /// Initializes a new instance of <see cref="TimeSeriesMapper"/>
         /// </summary>
         /// <param name="timeSeriesMap"></param>
-        public TimeSeriesMapper(ITimeSeriesMap timeSeriesMap)
+        public TimeSeriesMapper(TimeSeriesMap timeSeriesMap)
         {
-            _map = timeSeriesMap.Get();
-
+            _timeSeriesMap = timeSeriesMap;
         }
 
         /// <inheritdoc/>
@@ -30,25 +29,25 @@ namespace Dolittle.Edge.IdentityMapper
         {
             ThrowIfMissingSystem(system);
             ThrowIfTagIsMissingInSystem(system, tag);
-            return _map[system][tag];
+            return _timeSeriesMap[system][tag];
         }
 
         /// <inheritdoc/>
         public bool HasTimeSeriesFor(System system, Tag tag)
         {
-            if( !_map.ContainsKey(system)) return false;
-            if( !_map[system].ContainsKey(tag)) return false;
+            if( !_timeSeriesMap.ContainsKey(system)) return false;
+            if( !_timeSeriesMap[system].ContainsKey(tag)) return false;
             return true;
         }
 
         void ThrowIfMissingSystem(System system)
         {
-            if( !_map.ContainsKey(system)) throw new MissingSystem(system);
+            if( !_timeSeriesMap.ContainsKey(system)) throw new MissingSystem(system);
         }
 
         void ThrowIfTagIsMissingInSystem(System system, Tag tag)
         {
-            if( !_map[system].ContainsKey(tag)) throw new MissingTagInSystem(system, tag);
+            if( !_timeSeriesMap[system].ContainsKey(tag)) throw new MissingTagInSystem(system, tag);
         }
     }
 }

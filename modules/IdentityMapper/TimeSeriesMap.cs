@@ -2,36 +2,23 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Dolittle.IO;
-using Dolittle.Serialization.Json;
+using System.Collections.ObjectModel;
+using Dolittle.Configuration;
 
 namespace Dolittle.Edge.IdentityMapper
 {
     /// <summary>
-    /// Represents an implementation of <see cref="ITimeSeriesMap"/>
+    /// Represents the configuration for timeseries and their relationship to systems and tags
     /// </summary>
-    public class TimeSeriesMap : ITimeSeriesMap
+    public class TimeSeriesMap : 
+        ReadOnlyDictionary<System, TimeSeriesByTag>,
+        IConfigurationObject
     {
-        readonly IDictionary<System, IDictionary<Tag,TimeSeries>> _map;
-
         /// <summary>
-        /// Initializes a new instance of <see cref="TimeSeriesMapper"/>
+        /// Initializes a new instace of <see cref="TimeSeriesMap"/>
         /// </summary>
-        /// <param name="fileSystem"><see cref="IFileSystem"/> to use</param>
-        /// <param name="serializer"><see cref="ISerializer">JSON serializer</see> to use</param>
-        public TimeSeriesMap(IFileSystem fileSystem, ISerializer serializer)
-        {
-            var json = fileSystem.ReadAllText("./data/identities.json");
-            _map = serializer.FromJson<IDictionary<System, IDictionary<Tag,TimeSeries>>>(json);
-        }
-
-        /// <inheritdoc/>
-        public IDictionary<System, IDictionary<Tag,TimeSeries>> Get()
-        {
-            return _map;
-        }
+        /// <param name="timeSeriesByTag">Dictionary to initialize configuration with</param>
+        public TimeSeriesMap(IDictionary<System, TimeSeriesByTag> timeSeriesByTag) : base(timeSeriesByTag){}
     }
 }

@@ -34,7 +34,7 @@
         "name": "IdentityMapper Local Debug (.NET Core)",
         "type": "coreclr",
         "request": "launch",
-        "program": "${workspaceRoot}/modules/IdentityMapper/bin/Debug/netcoreapp2.1/IdentityMapper.dll",
+        "program": "${workspaceRoot}/modules/IdentityMapper/bin/Debug/netcoreapp2.1/Dolittle.Edge.IdentityMapper.dll",
         "args": [],
         "cwd": "${workspaceRoot}/modules/IdentityMapper",
         "internalConsoleOptions": "openOnSessionStart",

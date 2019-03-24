@@ -10,14 +10,18 @@ using It = Machine.Specifications.It;
 
 namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
 {
-    public class when_asking_if_timeseries_exists_for_in_non_existing_system : given.an_empty_map
+    public class when_asking_if_timeseries_exists_for_in_non_existing_system
     {
         const string system = "MySystem";
         const string tag = "MyTag";
 
         static bool result;
 
-        Because of = () => result = mapper.HasTimeSeriesFor(system,tag);
+        static TimeSeriesMapper mapper;
+
+        Establish context = () => mapper = new TimeSeriesMapper(new TimeSeriesMap(new Dictionary<System, TimeSeriesByTag>()));
+
+        Because of = () => result = mapper.HasTimeSeriesFor(system, tag);
 
         It should_consider_not_having_it = () => result.ShouldBeFalse();
     }

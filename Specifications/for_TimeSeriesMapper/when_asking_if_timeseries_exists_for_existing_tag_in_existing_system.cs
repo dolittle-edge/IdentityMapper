@@ -10,7 +10,7 @@ using It = Machine.Specifications.It;
 
 namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
 {
-    public class when_asking_if_timeseries_exists_for_existing_tag_in_existing_system : given.an_empty_map
+    public class when_asking_if_timeseries_exists_for_existing_tag_in_existing_system
     {
         const string system = "MySystem";
         const string other_system = "MyOtherSystem";
@@ -21,13 +21,19 @@ namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
 
         static bool result;
 
-        Establish context = () => 
+        static TimeSeriesMapper mapper;
+        Establish context = () =>
         {
-            actual_map[system] = new Dictionary<Tag, TimeSeries> { { tag, time_series } };
-            actual_map[other_system] = new Dictionary<Tag, TimeSeries> { { other_tag, other_time_series } };
+            mapper = new TimeSeriesMapper(new TimeSeriesMap(
+                new Dictionary<System, TimeSeriesByTag>
+                {
+                    { system, new TimeSeriesByTag(new Dictionary<Tag, TimeSeries> {{ tag, time_series }} )},
+                    { other_system, new TimeSeriesByTag(new Dictionary<Tag, TimeSeries> {{ other_tag, other_time_series }} )}
+                }
+            ));
         };
 
-        Because of = () => result = mapper.HasTimeSeriesFor(system,tag);
+        Because of = () => result = mapper.HasTimeSeriesFor(system, tag);
 
         It should_consider_having_it = () => result.ShouldBeTrue();
     }
