@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
+using Dolittle.Edge.Modules;
 using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;

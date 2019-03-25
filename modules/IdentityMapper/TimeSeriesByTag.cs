@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Dolittle.Edge.Modules;
 
 namespace Dolittle.Edge.IdentityMapper
 {

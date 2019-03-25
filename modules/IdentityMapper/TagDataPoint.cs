@@ -8,7 +8,7 @@ namespace Dolittle.Edge.IdentityMapper
     /// <summary>
     /// Represents an input message
     /// </summary>
-    public class InputDataPoint
+    public class TagDataPoint
     {
         /// <summary>
         /// Gets or sets the originating system 
@@ -23,7 +23,7 @@ namespace Dolittle.Edge.IdentityMapper
         /// <summary>
         /// Gets or sets the value
         /// </summary>
-        public double Value { get; set; }
+        public dynamic Value { get; set; }
 
         /// <summary>
         /// Gets or sets the timestamp in the form of EPOCH milliseconds granularity

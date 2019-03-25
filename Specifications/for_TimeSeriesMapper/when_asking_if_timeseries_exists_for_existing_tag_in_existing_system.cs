@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
+using Dolittle.Edge.Modules;
 
 namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
 {
