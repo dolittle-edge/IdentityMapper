@@ -12,7 +12,7 @@ namespace Dolittle.Edge.IdentityMapper
     /// <summary>
     /// Represents a <see cref="ICanHandle{T}">message handler</see> that can translate identities
     /// </summary>
-    public class TagDataPointHandler : ICanHandle<TagDataPoint>
+    public class TagDataPointHandler : ICanHandle<TagDataPoint<object>>
     {
         /// <summary>
         /// Gets the output name
@@ -48,11 +48,11 @@ namespace Dolittle.Edge.IdentityMapper
         public Input Input => "events";
 
         /// <inheritdoc/>
-        public async Task Handle(TagDataPoint tagDataPoint)
+        public async Task Handle(TagDataPoint<object> tagDataPoint)
         {
-            if (!_mapper.HasTimeSeriesFor(tagDataPoint.System, tagDataPoint.Tag))
+            if (!_mapper.HasTimeSeriesFor(tagDataPoint.ControlSystem, tagDataPoint.Tag))
             {
-                _logger.Warning($"There is no time series for tag '{tagDataPoint.Tag}' on system '{tagDataPoint.System}'");
+                _logger.Warning($"There is no time series for tag '{tagDataPoint.Tag}' on system '{tagDataPoint.ControlSystem}'");
                 await Task.CompletedTask;
                 return;
             }
@@ -60,7 +60,7 @@ namespace Dolittle.Edge.IdentityMapper
             var outputDatapoint = new DataPoint<dynamic>
             {
                 Value = tagDataPoint.Value,
-                TimeSeries = _mapper.GetTimeSeriesFor(tagDataPoint.System, tagDataPoint.Tag),
+                TimeSeries = _mapper.GetTimeSeriesFor(tagDataPoint.ControlSystem, tagDataPoint.Tag),
                 Timestamp = tagDataPoint.Timestamp
             };
 

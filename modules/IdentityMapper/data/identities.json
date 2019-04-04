@@ -1,5 +1,11 @@
 {
     "SomeSystem": {
-        "SomeTag": "74265f94-f01e-4769-aee9-04fc369ae338"
+        "SomeTag": "c51ff4fc-13ad-4dae-bc78-e82fa2887847"
+    },
+    "sim-test": {
+        "Generator1_Power": "ea63e51d-7d3a-47c4-be17-447b8cb32d0d",
+        "Generator2_Power": "9f332679-2e5b-41a8-ab97-585e2d376214",
+        "Generator3_Power": "633696dc-bc35-4b7c-9607-e0ea53a90914",
+        "Generator4_Power": "437ac116-1328-4fe2-bf10-2dc8b5b67c2b"
     }
 }

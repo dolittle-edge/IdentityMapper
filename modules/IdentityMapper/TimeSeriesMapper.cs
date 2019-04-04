@@ -26,27 +26,27 @@ namespace Dolittle.Edge.IdentityMapper
         }
 
         /// <inheritdoc/>
-        public TimeSeries GetTimeSeriesFor(System system, Tag tag)
+        public TimeSeries GetTimeSeriesFor(ControlSystem controlSystem, Tag tag)
         {
-            ThrowIfMissingSystem(system);
-            ThrowIfTagIsMissingInSystem(system, tag);
-            return _timeSeriesMap[system][tag];
+            ThrowIfMissingSystem(controlSystem);
+            ThrowIfTagIsMissingInSystem(controlSystem, tag);
+            return _timeSeriesMap[controlSystem][tag];
         }
 
         /// <inheritdoc/>
-        public bool HasTimeSeriesFor(System system, Tag tag)
+        public bool HasTimeSeriesFor(ControlSystem controlSystem, Tag tag)
         {
-            if( !_timeSeriesMap.ContainsKey(system)) return false;
-            if( !_timeSeriesMap[system].ContainsKey(tag)) return false;
+            if( !_timeSeriesMap.ContainsKey(controlSystem)) return false;
+            if( !_timeSeriesMap[controlSystem].ContainsKey(tag)) return false;
             return true;
         }
 
-        void ThrowIfMissingSystem(System system)
+        void ThrowIfMissingSystem(ControlSystem controlSystem)
         {
-            if( !_timeSeriesMap.ContainsKey(system)) throw new MissingSystem(system);
+            if( !_timeSeriesMap.ContainsKey(controlSystem)) throw new MissingSystem(controlSystem);
         }
 
-        void ThrowIfTagIsMissingInSystem(System system, Tag tag)
+        void ThrowIfTagIsMissingInSystem(ControlSystem system, Tag tag)
         {
             if( !_timeSeriesMap[system].ContainsKey(tag)) throw new MissingTagInSystem(system, tag);
         }
