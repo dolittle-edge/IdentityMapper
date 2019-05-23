@@ -3,11 +3,11 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System.Threading.Tasks;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 using Dolittle.Logging;
 using Dolittle.Serialization.Json;
 
-namespace Dolittle.Edge.IdentityMapper
+namespace Dolittle.TimeSeries.IdentityMapper
 {
     /// <summary>
     /// Represents a <see cref="ICanHandle{T}">message handler</see> that can translate identities

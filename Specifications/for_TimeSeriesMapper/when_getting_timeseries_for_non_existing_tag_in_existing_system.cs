@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
 
-namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
+namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
 {
     public class when_getting_timeseries_for_non_existing_tag_in_existing_system
     {
@@ -22,9 +22,9 @@ namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
         Establish context = () =>
         {
             mapper = new TimeSeriesMapper(new TimeSeriesMap(
-                new Dictionary<System, TimeSeriesByTag>
+                new Dictionary<ControlSystem, TimeSeriesByTag>
                 {
-                    { system, new TimeSeriesByTag(new Dictionary<Tag, TimeSeries>()) }
+                    { system, new TimeSeriesByTag(new Dictionary<Tag, Dolittle.TimeSeries.Modules.TimeSeries>()) }
                 }
             ));
         };

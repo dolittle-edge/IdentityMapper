@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 
-namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
+namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
 {
     public class when_asking_if_timeseries_exists_for_existing_tag_in_existing_system
     {
@@ -26,10 +26,10 @@ namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
         Establish context = () =>
         {
             mapper = new TimeSeriesMapper(new TimeSeriesMap(
-                new Dictionary<System, TimeSeriesByTag>
+                new Dictionary<ControlSystem, TimeSeriesByTag>
                 {
-                    { system, new TimeSeriesByTag(new Dictionary<Tag, TimeSeries> {{ tag, time_series }} )},
-                    { other_system, new TimeSeriesByTag(new Dictionary<Tag, TimeSeries> {{ other_tag, other_time_series }} )}
+                    { system, new TimeSeriesByTag(new Dictionary<Tag, Dolittle.TimeSeries.Modules.TimeSeries> {{ tag, time_series }} )},
+                    { other_system, new TimeSeriesByTag(new Dictionary<Tag, Dolittle.TimeSeries.Modules.TimeSeries> {{ other_tag, other_time_series }} )}
                 }
             ));
         };

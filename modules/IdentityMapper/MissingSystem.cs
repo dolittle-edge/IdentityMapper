@@ -3,9 +3,9 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 
-namespace Dolittle.Edge.IdentityMapper
+namespace Dolittle.TimeSeries.IdentityMapper
 {
     /// <summary>
     /// Exception that gets thrown when a <see cref="ControlSystem"/> does not exist

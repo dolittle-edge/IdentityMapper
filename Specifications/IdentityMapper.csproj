@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>Dolittle.Edge.IdentityMapper.Specs</AssemblyName>
+    <AssemblyName>Dolittle.TimeSeries.IdentityMapper.Specs</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

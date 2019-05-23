@@ -21,4 +21,4 @@ COPY --from=build-env /app/modules/IdentityMapper/data ./data
 RUN useradd -ms /bin/bash moduleuser
 USER moduleuser
 
-ENTRYPOINT ["dotnet", "Dolittle.Edge.IdentityMapper.dll"]
+ENTRYPOINT ["dotnet", "Dolittle.TimeSeries.IdentityMapper.dll"]

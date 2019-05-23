@@ -5,9 +5,9 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Dolittle.Configuration;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 
-namespace Dolittle.Edge.IdentityMapper
+namespace Dolittle.TimeSeries.IdentityMapper
 {
     /// <summary>
     /// Represents the configuration for timeseries and their relationship to systems and tags

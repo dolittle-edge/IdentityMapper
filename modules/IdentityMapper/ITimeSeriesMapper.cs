@@ -2,9 +2,9 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 
-namespace Dolittle.Edge.IdentityMapper
+namespace Dolittle.TimeSeries.IdentityMapper
 {
     /// <summary>
     /// Defines a system that can translate a tag for a specific system into a timeseries identifier
@@ -24,7 +24,7 @@ namespace Dolittle.Edge.IdentityMapper
         /// </summary>
         /// <param name="controlSystem"><see cref="ControlSystem"/> the <see cref="Tag"/> belongs to</param>
         /// <param name="tag">The actual <see cref="Tag"/></param>
-        /// <returns><see cref="TimeSeries"/></returns>
-        TimeSeries GetTimeSeriesFor(ControlSystem controlSystem, Tag tag);        
+        /// <returns><see cref="Dolittle.TimeSeries.Modules.TimeSeries"/></returns>
+        Dolittle.TimeSeries.Modules.TimeSeries GetTimeSeriesFor(ControlSystem controlSystem, Tag tag);        
     }
 }

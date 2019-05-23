@@ -39,17 +39,27 @@
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "dolittle/edge-identitymapper:1.0.9-amd64",
+              "image": "dolittle/edge-identitymapper:1.0.10-amd64",
               "createOptions": "{\"HostConfig\":{}}"
             }
           },
-          "TimeSeriesSimulator": {
+          "Terasaki": {
             "version": "1.0",
             "type": "docker",
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "dolittle/edge-timeseriessimulator:1.0.9-amd64",
+              "image": "dolittle/edge-terasaki:1.0.1-amd64",
+              "createOptions": "{\"HostConfig\":{}}"
+            }
+          },
+          "Simulator": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "dolittle/edge-Simulator:1.0.9-amd64",
               "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"80/tcp\":[{\"HostPort\":\"8181\"}]}}}"
             }
           }
@@ -60,7 +70,8 @@
       "properties.desired": {
         "schemaVersion": "1.0",
         "routes": {
-          "TimeSeriesSimulatorToIdentityMapper": "FROM /messages/modules/TimeSeriesSimulator/outputs/tags INTO BrokeredEndpoint(\"/modules/IdentityMapper/inputs/events\")",
+          "SimulatorToIdentityMapper": "FROM /messages/modules/Simulator/outputs/tags INTO BrokeredEndpoint(\"/modules/IdentityMapper/inputs/events\")",
+          "TerasakiToIdentityMapper": "FROM /messages/modules/Terasaki/outputs/* INTO BrokeredEndpoint(\"/modules/IdentityMapper/inputs/events\")",
           "IdentityMapperIoTHub": "FROM /messages/modules/IdentityMapper/outputs/* INTO $upstream"
         },
         "storeAndForwardConfiguration": {

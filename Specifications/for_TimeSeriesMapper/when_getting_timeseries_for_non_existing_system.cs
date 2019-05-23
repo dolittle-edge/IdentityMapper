@@ -7,8 +7,9 @@ using System.Collections.Generic;
 using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
+using Dolittle.TimeSeries.Modules;
 
-namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
+namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
 {
     public class when_getting_timeseries_for_non_existing_system
     {
@@ -18,7 +19,7 @@ namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
         static Exception result;
         static TimeSeriesMapper mapper;
 
-        Establish context = () => mapper = new TimeSeriesMapper(new TimeSeriesMap(new Dictionary<System, TimeSeriesByTag>()));
+        Establish context = () => mapper = new TimeSeriesMapper(new TimeSeriesMap(new Dictionary<ControlSystem, TimeSeriesByTag>()));
 
 
         Because of = () => result = Catch.Exception(() => mapper.GetTimeSeriesFor(system,tag));

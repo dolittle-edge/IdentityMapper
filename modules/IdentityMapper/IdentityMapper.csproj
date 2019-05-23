@@ -4,7 +4,7 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp2.1</TargetFramework>
-        <AssemblyName>Dolittle.Edge.IdentityMapper</AssemblyName>
+        <AssemblyName>Dolittle.TimeSeries.IdentityMapper</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dolittle.Edge.Modules" Version="2.*" />
+        <PackageReference Include="Dolittle.TimeSeries.Modules" Version="2.*" />
         <PackageReference Include="Dolittle.Configuration.Files" Version="2.*" />
     </ItemGroup>
 </Project>

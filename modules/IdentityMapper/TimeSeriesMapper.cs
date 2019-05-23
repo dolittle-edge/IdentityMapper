@@ -3,11 +3,11 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System.Collections.Generic;
-using Dolittle.Edge.Modules;
+using Dolittle.TimeSeries.Modules;
 using Dolittle.IO;
 using Dolittle.Serialization.Json;
 
-namespace Dolittle.Edge.IdentityMapper
+namespace Dolittle.TimeSeries.IdentityMapper
 {
     /// <summary>
     /// Represents an implementation of <see cref="ITimeSeriesMapper"/>
@@ -19,14 +19,14 @@ namespace Dolittle.Edge.IdentityMapper
         /// <summary>
         /// Initializes a new instance of <see cref="TimeSeriesMapper"/>
         /// </summary>
-        /// <param name="timeSeriesMap"></param>
+        /// <param name="timeSeriesMap"><see cref="TimeSeriesMap"/></param>
         public TimeSeriesMapper(TimeSeriesMap timeSeriesMap)
         {
             _timeSeriesMap = timeSeriesMap;
         }
 
         /// <inheritdoc/>
-        public TimeSeries GetTimeSeriesFor(ControlSystem controlSystem, Tag tag)
+        public Dolittle.TimeSeries.Modules.TimeSeries GetTimeSeriesFor(ControlSystem controlSystem, Tag tag)
         {
             ThrowIfMissingSystem(controlSystem);
             ThrowIfTagIsMissingInSystem(controlSystem, tag);

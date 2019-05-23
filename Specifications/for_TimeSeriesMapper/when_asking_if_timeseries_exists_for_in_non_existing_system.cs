@@ -5,10 +5,11 @@
 using System;
 using System.Collections.Generic;
 using Machine.Specifications;
+using Dolittle.TimeSeries.Modules;
 using Moq;
 using It = Machine.Specifications.It;
 
-namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
+namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
 {
     public class when_asking_if_timeseries_exists_for_in_non_existing_system
     {
@@ -19,7 +20,7 @@ namespace Dolittle.Edge.IdentityMapper.for_TimeSeriesMapper
 
         static TimeSeriesMapper mapper;
 
-        Establish context = () => mapper = new TimeSeriesMapper(new TimeSeriesMap(new Dictionary<System, TimeSeriesByTag>()));
+        Establish context = () => mapper = new TimeSeriesMapper(new TimeSeriesMap(new Dictionary<ControlSystem, TimeSeriesByTag>()));
 
         Because of = () => result = mapper.HasTimeSeriesFor(system, tag);
 

@@ -8,7 +8,7 @@ using Dolittle.Configuration;
 using Dolittle.Configuration.Files;
 using Dolittle.IO;
 
-namespace Dolittle.Edge.IdentityMapper
+namespace Dolittle.TimeSeries.IdentityMapper
 {
     /// <summary>
     /// 

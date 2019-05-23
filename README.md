@@ -56,7 +56,7 @@ In your `deployment.json` file, you will need to add the module. For more detail
 
 ```json
 "modules": {
-    "Dolittle.Edge.IdentityMapper": {
+    "Dolittle.TimeSeries.IdentityMapper": {
     "version": "1.0",
     "type": "docker",
     "status": "running",
@@ -80,7 +80,7 @@ volume binding.
 
 ```json
 "Binds": [
-    "/etc/dolittle.edge/identitymapper:/app/data"
+    "/etc/Dolittle.TimeSeries/identitymapper:/app/data"
 ]
 ```
 
@@ -88,7 +88,7 @@ This should result in something like:
 
 ```json
 "modules": {
-    "Dolittle.Edge.IdentityMapper": {
+    "Dolittle.TimeSeries.IdentityMapper": {
     "version": "1.0",
     "type": "docker",
     "status": "running",
@@ -98,7 +98,7 @@ This should result in something like:
         "createOptions": {
         "HostConfig": {
             "Binds": [
-                "/etc/dolittle.edge/identitymapper:/app/data"
+                "/etc/Dolittle.TimeSeries/identitymapper:/app/data"
             ]
         }
     }
