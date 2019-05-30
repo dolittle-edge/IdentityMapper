@@ -22,3 +22,5 @@ RUN useradd -ms /bin/bash moduleuser
 USER moduleuser
 
 ENTRYPOINT ["dotnet", "Dolittle.TimeSeries.IdentityMapper.dll"]
+
+

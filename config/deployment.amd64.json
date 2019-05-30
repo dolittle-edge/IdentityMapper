@@ -49,7 +49,7 @@
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "dolittle/timeseries-terasaki:1.0.1-amd64",
+              "image": "dolittle/timeseries-terasaki:1.0.6-amd64",
               "createOptions": "{\"HostConfig\":{}}"
             }
           },
