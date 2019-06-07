@@ -13,6 +13,5 @@
 
     <ItemGroup>
         <PackageReference Include="Dolittle.TimeSeries.Modules" Version="2.*" />
-        <PackageReference Include="Dolittle.Configuration.Files" Version="2.*" />
     </ItemGroup>
 </Project>
