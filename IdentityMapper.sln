@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityMapper", "modules\IdentityMapper\IdentityMapper.csproj", "{FA4580DD-3BEE-44BD-8FFE-44827B0F2F50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityMapper", "Source\IdentityMapper.csproj", "{FA4580DD-3BEE-44BD-8FFE-44827B0F2F50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityMapper.Specs", "Specifications\IdentityMapper.csproj", "{7BABEE1E-5860-454F-B963-27B8F34CA1D6}"
 EndProject
