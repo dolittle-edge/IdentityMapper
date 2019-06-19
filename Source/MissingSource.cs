@@ -8,14 +8,14 @@ using Dolittle.TimeSeries.Modules;
 namespace Dolittle.TimeSeries.IdentityMapper
 {
     /// <summary>
-    /// Exception that gets thrown when a <see cref="ControlSystem"/> does not exist
+    /// Exception that gets thrown when a <see cref="Source"/> does not exist
     /// </summary>
-    public class MissingSystem : Exception
+    public class MissingSource : Exception
     {
         /// <summary>
-        /// Initalizes a new instance of <see cref="MissingSystem"/>
+        /// Initalizes a new instance of <see cref="MissingSource"/>
         /// </summary>
-        /// <param name="controlSystem"><see cref="ControlSystem"/> that does not exist</param>
-        public MissingSystem(ControlSystem controlSystem) : base($"System '{controlSystem}' does not exist") { }
+        /// <param name="source"><see cref="Source"/> that does not exist</param>
+        public MissingSource(Source source) : base($"System '{source}' does not exist") { }
     }
 }

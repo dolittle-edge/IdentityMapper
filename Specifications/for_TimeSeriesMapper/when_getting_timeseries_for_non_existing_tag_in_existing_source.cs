@@ -11,9 +11,9 @@ using It = Machine.Specifications.It;
 
 namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
 {
-    public class when_getting_timeseries_for_non_existing_tag_in_existing_system
+    public class when_getting_timeseries_for_non_existing_tag_in_existing_source
     {
-        const string system = "MySystem";
+        const string source = "MySource";
         const string tag = "MyTag";
 
         static Exception result;
@@ -22,15 +22,15 @@ namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
         Establish context = () =>
         {
             mapper = new TimeSeriesMapper(new TimeSeriesMap(
-                new Dictionary<ControlSystem, TimeSeriesByTag>
+                new Dictionary<Source, TimeSeriesByTag>
                 {
-                    { system, new TimeSeriesByTag(new Dictionary<Tag, Dolittle.TimeSeries.Modules.TimeSeries>()) }
+                    { source, new TimeSeriesByTag(new Dictionary<Tag, Dolittle.TimeSeries.Modules.TimeSeries>()) }
                 }
             ));
         };
 
-        Because of = () => result = Catch.Exception(() => mapper.GetTimeSeriesFor(system,tag));
+        Because of = () => result = Catch.Exception(() => mapper.GetTimeSeriesFor(source,tag));
 
-        It should_throw_missing_tag_in_system = () => result.ShouldBeOfExactType<MissingTagInSystem>();
+        It should_throw_missing_tag_in_system = () => result.ShouldBeOfExactType<MissingTagInSource>();
     }
 }

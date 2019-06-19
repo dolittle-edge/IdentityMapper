@@ -8,15 +8,15 @@ using Dolittle.TimeSeries.Modules;
 namespace Dolittle.TimeSeries.IdentityMapper
 {
     /// <summary>
-    /// Exception that gets thrown when a <see cref="Tag"/> is missing in a <see cref="ControlSystem"/>
+    /// Exception that gets thrown when a <see cref="Tag"/> is missing in a <see cref="Source"/>
     /// </summary>
-    public class MissingTagInSystem : Exception
+    public class MissingTagInSource : Exception
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="MissingTagInSystem"/>
+        /// Initializes a new instance of <see cref="MissingTagInSource"/>
         /// </summary>
-        /// <param name="controlSystem"><see cref="System"/> the <see cref="Tag"/> is missing</param>
+        /// <param name="source"><see cref="Source"/> the <see cref="Tag"/> is missing</param>
         /// <param name="tag"><see cref="Tag"/> that is missing</param>
-        public MissingTagInSystem(ControlSystem controlSystem, Tag tag) : base($"Tag '{tag}' is missing in control system '{controlSystem}'") {}
+        public MissingTagInSource(Source source, Tag tag) : base($"Tag '{tag}' is missing in control system '{source}'") {}
     }
 }

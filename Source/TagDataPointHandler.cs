@@ -50,9 +50,9 @@ namespace Dolittle.TimeSeries.IdentityMapper
         /// <inheritdoc/>
         public async Task Handle(TagDataPoint<object> tagDataPoint)
         {
-            if (!_mapper.HasTimeSeriesFor(tagDataPoint.ControlSystem, tagDataPoint.Tag))
+            if (!_mapper.HasTimeSeriesFor(tagDataPoint.Source, tagDataPoint.Tag))
             {
-                _logger.Warning($"There is no time series for tag '{tagDataPoint.Tag}' on system '{tagDataPoint.ControlSystem}'");
+                _logger.Warning($"There is no time series for tag '{tagDataPoint.Tag}' on system '{tagDataPoint.Source}'");
                 await Task.CompletedTask;
                 return;
             }
@@ -60,7 +60,7 @@ namespace Dolittle.TimeSeries.IdentityMapper
             var outputDatapoint = new DataPoint<dynamic>
             {
                 Value = tagDataPoint.Value,
-                TimeSeries = _mapper.GetTimeSeriesFor(tagDataPoint.ControlSystem, tagDataPoint.Tag),
+                TimeSeries = _mapper.GetTimeSeriesFor(tagDataPoint.Source, tagDataPoint.Tag),
                 Timestamp = tagDataPoint.Timestamp
             };
 

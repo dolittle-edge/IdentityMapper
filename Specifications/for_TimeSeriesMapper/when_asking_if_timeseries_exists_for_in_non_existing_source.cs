@@ -4,33 +4,25 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
-using Dolittle.TimeSeries.Modules;
 using Machine.Specifications;
+using Dolittle.TimeSeries.Modules;
 using Moq;
 using It = Machine.Specifications.It;
 
 namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
 {
-    public class when_asking_if_timeseries_exists_for_non_existing_tag_in_existing_system
+    public class when_asking_if_timeseries_exists_for_in_non_existing_source
     {
-        const string system = "MySystem";
+        const string source = "MySource";
         const string tag = "MyTag";
 
         static bool result;
 
         static TimeSeriesMapper mapper;
-        Establish context = () =>
-        {
-            mapper = new TimeSeriesMapper(new TimeSeriesMap(
-                new Dictionary<ControlSystem, TimeSeriesByTag>
-                {
-                    { system, new TimeSeriesByTag(new Dictionary<Tag, Dolittle.TimeSeries.Modules.TimeSeries>()) }
-                }
-            ));
-        };
 
+        Establish context = () => mapper = new TimeSeriesMapper(new TimeSeriesMap(new Dictionary<Source, TimeSeriesByTag>()));
 
-        Because of = () => result = mapper.HasTimeSeriesFor(system,tag);
+        Because of = () => result = mapper.HasTimeSeriesFor(source, tag);
 
         It should_consider_not_having_it = () => result.ShouldBeFalse();
     }

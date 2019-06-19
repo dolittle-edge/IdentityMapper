@@ -14,17 +14,17 @@ namespace Dolittle.TimeSeries.IdentityMapper
         /// <summary>
         /// Check if there is a <see cref="TimeSeries"/> for a <see cref="Tag"/> in a <see cref="System"/>
         /// </summary>
-        /// <param name="controlSystem"><see cref="ControlSystem"/> the <see cref="Tag"/> belongs to</param>
+        /// <param name="source"><see cref="Source"/> the <see cref="Tag"/> belongs to</param>
         /// <param name="tag">The actual <see cref="Tag"/></param>
         /// <returns>True if it exists, false if not</returns>
-        bool HasTimeSeriesFor(ControlSystem controlSystem, Tag tag);        
+        bool HasTimeSeriesFor(Source source, Tag tag);        
 
         /// <summary>
         /// Get the <see cref="TimeSeries"/> for a <see cref="Tag"/> in a <see cref="System"/>
         /// </summary>
-        /// <param name="controlSystem"><see cref="ControlSystem"/> the <see cref="Tag"/> belongs to</param>
+        /// <param name="source"><see cref="Source"/> the <see cref="Tag"/> belongs to</param>
         /// <param name="tag">The actual <see cref="Tag"/></param>
         /// <returns><see cref="Dolittle.TimeSeries.Modules.TimeSeries"/></returns>
-        Dolittle.TimeSeries.Modules.TimeSeries GetTimeSeriesFor(ControlSystem controlSystem, Tag tag);        
+        Dolittle.TimeSeries.Modules.TimeSeries GetTimeSeriesFor(Source source, Tag tag);        
     }
 }

@@ -11,19 +11,19 @@ using Dolittle.TimeSeries.Modules;
 
 namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
 {
-    public class when_getting_timeseries_for_non_existing_system
+    public class when_getting_timeseries_for_non_existing_source
     {
-        const string system = "MySystem";
+        const string source = "MySource";
         const string tag = "MyTag";
 
         static Exception result;
         static TimeSeriesMapper mapper;
 
-        Establish context = () => mapper = new TimeSeriesMapper(new TimeSeriesMap(new Dictionary<ControlSystem, TimeSeriesByTag>()));
+        Establish context = () => mapper = new TimeSeriesMapper(new TimeSeriesMap(new Dictionary<Source, TimeSeriesByTag>()));
 
 
-        Because of = () => result = Catch.Exception(() => mapper.GetTimeSeriesFor(system,tag));
+        Because of = () => result = Catch.Exception(() => mapper.GetTimeSeriesFor(source,tag));
 
-        It should_throw_missing_system = () => result.ShouldBeOfExactType<MissingSystem>();
+        It should_throw_missing_source = () => result.ShouldBeOfExactType<MissingSource>();
     }
 }

@@ -26,29 +26,29 @@ namespace Dolittle.TimeSeries.IdentityMapper
         }
 
         /// <inheritdoc/>
-        public Dolittle.TimeSeries.Modules.TimeSeries GetTimeSeriesFor(ControlSystem controlSystem, Tag tag)
+        public Dolittle.TimeSeries.Modules.TimeSeries GetTimeSeriesFor(Source source, Tag tag)
         {
-            ThrowIfMissingSystem(controlSystem);
-            ThrowIfTagIsMissingInSystem(controlSystem, tag);
-            return _timeSeriesMap[controlSystem][tag];
+            ThrowIfMissingSystem(source);
+            ThrowIfTagIsMissingInSystem(source, tag);
+            return _timeSeriesMap[source][tag];
         }
 
         /// <inheritdoc/>
-        public bool HasTimeSeriesFor(ControlSystem controlSystem, Tag tag)
+        public bool HasTimeSeriesFor(Source source, Tag tag)
         {
-            if( !_timeSeriesMap.ContainsKey(controlSystem)) return false;
-            if( !_timeSeriesMap[controlSystem].ContainsKey(tag)) return false;
+            if( !_timeSeriesMap.ContainsKey(source)) return false;
+            if( !_timeSeriesMap[source].ContainsKey(tag)) return false;
             return true;
         }
 
-        void ThrowIfMissingSystem(ControlSystem controlSystem)
+        void ThrowIfMissingSystem(Source source)
         {
-            if( !_timeSeriesMap.ContainsKey(controlSystem)) throw new MissingSystem(controlSystem);
+            if( !_timeSeriesMap.ContainsKey(source)) throw new MissingSource(source);
         }
 
-        void ThrowIfTagIsMissingInSystem(ControlSystem system, Tag tag)
+        void ThrowIfTagIsMissingInSystem(Source source, Tag tag)
         {
-            if( !_timeSeriesMap[system].ContainsKey(tag)) throw new MissingTagInSystem(system, tag);
+            if( !_timeSeriesMap[source].ContainsKey(tag)) throw new MissingTagInSource(source, tag);
         }
     }
 }

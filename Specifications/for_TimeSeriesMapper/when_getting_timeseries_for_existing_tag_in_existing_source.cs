@@ -11,10 +11,10 @@ using Dolittle.TimeSeries.Modules;
 
 namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
 {
-    public class when_getting_timeseries_for_existing_tag_in_existing_system
+    public class when_getting_timeseries_for_existing_tag_in_existing_source
     {
-        const string system = "MySystem";
-        const string other_system = "MyOtherSystem";
+        const string source = "MySource";
+        const string other_source = "MyOtherSource";
         const string tag = "MyTag";
         const string other_tag = "MyOtherTag";
         static Guid time_series = Guid.NewGuid();
@@ -27,15 +27,15 @@ namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
         Establish context = () =>
         {
             mapper = new TimeSeriesMapper(new TimeSeriesMap(
-                new Dictionary<ControlSystem, TimeSeriesByTag>
+                new Dictionary<Source, TimeSeriesByTag>
                 {
-                    { system, new TimeSeriesByTag(new Dictionary<Tag, Dolittle.TimeSeries.Modules.TimeSeries> {{ tag, time_series }} )},
-                    { other_system, new TimeSeriesByTag(new Dictionary<Tag, Dolittle.TimeSeries.Modules.TimeSeries> {{ other_tag, other_time_series }} )}
+                    { source, new TimeSeriesByTag(new Dictionary<Tag, Dolittle.TimeSeries.Modules.TimeSeries> {{ tag, time_series }} )},
+                    { other_source, new TimeSeriesByTag(new Dictionary<Tag, Dolittle.TimeSeries.Modules.TimeSeries> {{ other_tag, other_time_series }} )}
                 }
             ));
         };
 
-        Because of = () => result = mapper.GetTimeSeriesFor(system,tag);
+        Because of = () => result = mapper.GetTimeSeriesFor(source,tag);
 
         It should_return_the_timeseries = () => result.ShouldEqual((Dolittle.TimeSeries.Modules.TimeSeries)time_series);
     }

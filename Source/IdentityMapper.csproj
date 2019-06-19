@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dolittle.TimeSeries.Modules" Version="2.*" />
+        <PackageReference Include="Dolittle.TimeSeries.Modules" Version="5.*" />
+        <PackageReference Include="Dolittle.TimeSeries.Modules.IoTEdge" Version="5.*" />
     </ItemGroup>
 </Project>

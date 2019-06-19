@@ -39,28 +39,8 @@
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "dolittle/timeseries-identitymapper:1.0.10-amd64",
+              "image": "dolittle/timeseries-identitymapper",
               "createOptions": "{\"HostConfig\":{}}"
-            }
-          },
-          "Terasaki": {
-            "version": "1.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "dolittle/timeseries-terasaki:1.0.6-amd64",
-              "createOptions": "{\"HostConfig\":{}}"
-            }
-          },
-          "Simulator": {
-            "version": "1.0",
-            "type": "docker",
-            "status": "running",
-            "restartPolicy": "always",
-            "settings": {
-              "image": "dolittle/timeseries-simulator:1.0.9-amd64",
-              "createOptions": "{\"HostConfig\":{\"PortBindings\":{\"80/tcp\":[{\"HostPort\":\"8181\"}]}}}"
             }
           }
         }
@@ -70,8 +50,6 @@
       "properties.desired": {
         "schemaVersion": "1.0",
         "routes": {
-          "SimulatorToIdentityMapper": "FROM /messages/modules/Simulator/outputs/tags INTO BrokeredEndpoint(\"/modules/IdentityMapper/inputs/events\")",
-          "TerasakiToIdentityMapper": "FROM /messages/modules/Terasaki/outputs/* INTO BrokeredEndpoint(\"/modules/IdentityMapper/inputs/events\")",
           "IdentityMapperIoTHub": "FROM /messages/modules/IdentityMapper/outputs/* INTO $upstream"
         },
         "storeAndForwardConfiguration": {

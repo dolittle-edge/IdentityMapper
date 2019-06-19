@@ -12,14 +12,15 @@ namespace Dolittle.TimeSeries.IdentityMapper
     /// <summary>
     /// Represents the configuration for timeseries and their relationship to systems and tags
     /// </summary>
+    [Name("identities")]
     public class TimeSeriesMap : 
-        ReadOnlyDictionary<ControlSystem, TimeSeriesByTag>,
+        ReadOnlyDictionary<Source, TimeSeriesByTag>,
         IConfigurationObject
     {
         /// <summary>
         /// Initializes a new instace of <see cref="TimeSeriesMap"/>
         /// </summary>
         /// <param name="timeSeriesByTag">Dictionary to initialize configuration with</param>
-        public TimeSeriesMap(IDictionary<ControlSystem, TimeSeriesByTag> timeSeriesByTag) : base(timeSeriesByTag){}
+        public TimeSeriesMap(IDictionary<Source, TimeSeriesByTag> timeSeriesByTag) : base(timeSeriesByTag){}
     }
 }
