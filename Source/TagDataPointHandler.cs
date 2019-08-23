@@ -2,10 +2,11 @@
  *  Copyright (c) Dolittle. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+using System;
 using System.Threading.Tasks;
-using Dolittle.TimeSeries.Modules;
 using Dolittle.Logging;
 using Dolittle.Serialization.Json;
+using Dolittle.TimeSeries.Modules;
 
 namespace Dolittle.TimeSeries.IdentityMapper
 {
@@ -50,21 +51,29 @@ namespace Dolittle.TimeSeries.IdentityMapper
         /// <inheritdoc/>
         public async Task Handle(TagDataPoint<object> tagDataPoint)
         {
-            if (!_mapper.HasTimeSeriesFor(tagDataPoint.Source, tagDataPoint.Tag))
+            try
             {
-                _logger.Warning($"There is no time series for tag '{tagDataPoint.Tag}' on system '{tagDataPoint.Source}'");
-                await Task.CompletedTask;
-                return;
+                _logger.Information($"Handle data point from source '{tagDataPoint.Source}' with tag '{tagDataPoint.Tag}'");
+                if (!_mapper.HasTimeSeriesFor(tagDataPoint.Source, tagDataPoint.Tag))
+                {
+                    _logger.Warning($"There is no time series for tag '{tagDataPoint.Tag}' on system '{tagDataPoint.Source}'");
+                    await Task.CompletedTask;
+                    return;
+                }
+
+                var outputDatapoint = new DataPoint<dynamic>
+                {
+                    Value = tagDataPoint.Value,
+                    TimeSeries = _mapper.GetTimeSeriesFor(tagDataPoint.Source, tagDataPoint.Tag),
+                    Timestamp = tagDataPoint.Timestamp
+                };
+
+                await _client.SendAsJson(Output, outputDatapoint);
             }
-
-            var outputDatapoint = new DataPoint<dynamic>
+            catch (Exception ex)
             {
-                Value = tagDataPoint.Value,
-                TimeSeries = _mapper.GetTimeSeriesFor(tagDataPoint.Source, tagDataPoint.Tag),
-                Timestamp = tagDataPoint.Timestamp
-            };
-
-            await _client.SendAsJson(Output, outputDatapoint);
+                _logger.Error(ex, $"Problems handling data point from source '{tagDataPoint.Source}' with tag '{tagDataPoint.Tag}' - with message '{ex.Message}' and stack trace '{ex.StackTrace}'");
+            }
 
             await Task.CompletedTask;
         }
