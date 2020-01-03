@@ -2,6 +2,7 @@
  *  Copyright (c) RaaLabs. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
+
 using RaaLabs.TimeSeries.Modules.Booting;
 
 namespace RaaLabs.TimeSeries.IdentityMapper
@@ -10,7 +11,7 @@ namespace RaaLabs.TimeSeries.IdentityMapper
     {
         static void Main(string[] args)
         {
-            Bootloader.Configure(_ => {}).Start().Wait();
+            Bootloader.Configure(_ => { }).Start().Wait();
         }
     }
 }

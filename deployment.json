@@ -39,7 +39,7 @@
                         "status": "running",
                         "restartPolicy": "always",
                         "settings": {
-                            "image": "raalabs/timeseries-identitymapper",
+                            "image": "shipos/timeseries-identitymapper",
                             "createOptions": "{\"HostConfig\":{}}"
                         }
                     },
