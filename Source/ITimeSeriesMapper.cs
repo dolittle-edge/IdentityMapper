@@ -1,10 +1,10 @@
 /*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
+ *  Copyright (c) RaaLabs. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-using Dolittle.TimeSeries.Modules;
+using RaaLabs.TimeSeries.Modules;
 
-namespace Dolittle.TimeSeries.IdentityMapper
+namespace RaaLabs.TimeSeries.IdentityMapper
 {
     /// <summary>
     /// Defines a system that can translate a tag for a specific system into a timeseries identifier
@@ -24,7 +24,7 @@ namespace Dolittle.TimeSeries.IdentityMapper
         /// </summary>
         /// <param name="source"><see cref="Source"/> the <see cref="Tag"/> belongs to</param>
         /// <param name="tag">The actual <see cref="Tag"/></param>
-        /// <returns><see cref="Dolittle.TimeSeries.Modules.TimeSeries"/></returns>
-        Dolittle.TimeSeries.Modules.TimeSeries GetTimeSeriesFor(Source source, Tag tag);        
+        /// <returns><see cref="RaaLabs.TimeSeries.TimeSeries"/></returns>
+        RaaLabs.TimeSeries.TimeSeries GetTimeSeriesFor(Source source, Tag tag);        
     }
 }

@@ -23,7 +23,7 @@ ARG CONFIGURATION
 
 VOLUME [ "/app/data" ]
 
-COPY Build/MSBuild/* ./Build/MSBuild/
+COPY default.props ./default.props
 COPY Source/*.csproj ./Source/
 
 WORKDIR /app/Source/
@@ -40,4 +40,4 @@ WORKDIR /app
 COPY --from=build-env /app/Source/out ./
 COPY --from=build-env /app/Source/data ./data
 
-ENTRYPOINT ["dotnet", "Dolittle.TimeSeries.IdentityMapper.dll"]
+ENTRYPOINT ["dotnet", "RaaLabs.TimeSeries.IdentityMapper.dll"]

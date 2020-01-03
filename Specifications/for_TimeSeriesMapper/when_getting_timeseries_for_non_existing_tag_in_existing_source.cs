@@ -1,15 +1,15 @@
 /*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
+ *  Copyright (c) RaaLabs. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
 using System.Collections.Generic;
-using Dolittle.TimeSeries.Modules;
+using RaaLabs.TimeSeries.Modules;
 using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
 
-namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
+namespace RaaLabs.TimeSeries.IdentityMapper.for_TimeSeriesMapper
 {
     public class when_getting_timeseries_for_non_existing_tag_in_existing_source
     {
@@ -24,7 +24,7 @@ namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
             mapper = new TimeSeriesMapper(new TimeSeriesMap(
                 new Dictionary<Source, TimeSeriesByTag>
                 {
-                    { source, new TimeSeriesByTag(new Dictionary<Tag, Dolittle.TimeSeries.Modules.TimeSeries>()) }
+                    { source, new TimeSeriesByTag(new Dictionary<Tag, RaaLabs.TimeSeries.Modules.TimeSeries>()) }
                 }
             ));
         };

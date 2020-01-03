@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>Dolittle.TimeSeries.IdentityMapper.Specs</AssemblyName>
+    <AssemblyName>RaaLabs.TimeSeries.IdentityMapper.Specs</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

@@ -39,7 +39,7 @@
                         "status": "running",
                         "restartPolicy": "always",
                         "settings": {
-                            "image": "dolittle/timeseries-identitymapper",
+                            "image": "raalabs/timeseries-identitymapper",
                             "createOptions": "{\"HostConfig\":{}}"
                         }
                     },

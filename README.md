@@ -58,7 +58,7 @@ In your `deployment.json` file, you will need to add the module. For more detail
 
 ```json
 "modules": {
-    "Dolittle.TimeSeries.IdentityMapper": {
+    "RaaLabs.TimeSeries.IdentityMapper": {
     "version": "1.0",
     "type": "docker",
     "status": "running",
@@ -82,7 +82,7 @@ volume binding.
 
 ```json
 "Binds": [
-    "/etc/dolittle.timeseries/identitymapper:/app/data"
+    "/etc/RaaLabs.TimeSeries/identitymapper:/app/data"
 ]
 ```
 
@@ -90,17 +90,17 @@ This should result in something like:
 
 ```json
 "modules": {
-    "Dolittle.TimeSeries.IdentityMapper": {
+    "RaaLabs.TimeSeries.IdentityMapper": {
     "version": "1.0",
     "type": "docker",
     "status": "running",
     "restartPolicy": "always",
     "settings": {
-        "image": "dolittle/timeseries-identitymapper",
+        "image": "shipos/timeseries-identitymapper",
         "createOptions": {
         "HostConfig": {
             "Binds": [
-                "/etc/dolittle.timeseries/identitymapper:/app/data"
+                "/etc/raalabs.timeseries/identitymapper:/app/data"
             ]
         }
     }

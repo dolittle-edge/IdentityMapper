@@ -1,13 +1,13 @@
 /*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
+ *  Copyright (c) RaaLabs. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System.Threading.Tasks;
-using Dolittle.TimeSeries.Modules;
+using RaaLabs.TimeSeries.Modules;
 using Dolittle.Logging;
 using Dolittle.Serialization.Json;
 
-namespace Dolittle.TimeSeries.IdentityMapper
+namespace RaaLabs.TimeSeries.IdentityMapper
 {
     /// <summary>
     /// Represents a <see cref="ICanHandle{T}">message handler</see> that can translate identities

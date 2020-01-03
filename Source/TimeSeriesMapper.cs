@@ -1,13 +1,13 @@
 /*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
+ *  Copyright (c) RaaLabs. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System.Collections.Generic;
-using Dolittle.TimeSeries.Modules;
+using RaaLabs.TimeSeries.Modules;
 using Dolittle.IO;
 using Dolittle.Serialization.Json;
 
-namespace Dolittle.TimeSeries.IdentityMapper
+namespace RaaLabs.TimeSeries.IdentityMapper
 {
     /// <summary>
     /// Represents an implementation of <see cref="ITimeSeriesMapper"/>
@@ -26,7 +26,7 @@ namespace Dolittle.TimeSeries.IdentityMapper
         }
 
         /// <inheritdoc/>
-        public Dolittle.TimeSeries.Modules.TimeSeries GetTimeSeriesFor(Source source, Tag tag)
+        public RaaLabs.TimeSeries.TimeSeries GetTimeSeriesFor(Source source, Tag tag)
         {
             ThrowIfMissingSystem(source);
             ThrowIfTagIsMissingInSystem(source, tag);

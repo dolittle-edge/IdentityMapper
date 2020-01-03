@@ -1,5 +1,5 @@
 /*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
+ *  Copyright (c) RaaLabs. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
@@ -7,9 +7,9 @@ using System.Collections.Generic;
 using Machine.Specifications;
 using Moq;
 using It = Machine.Specifications.It;
-using Dolittle.TimeSeries.Modules;
+using RaaLabs.TimeSeries.Modules;
 
-namespace Dolittle.TimeSeries.IdentityMapper.for_TimeSeriesMapper
+namespace RaaLabs.TimeSeries.IdentityMapper.for_TimeSeriesMapper
 {
     public class when_getting_timeseries_for_non_existing_source
     {

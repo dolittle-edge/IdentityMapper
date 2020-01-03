@@ -1,11 +1,11 @@
 /*---------------------------------------------------------------------------------------------
- *  Copyright (c) Dolittle. All rights reserved.
+ *  Copyright (c) RaaLabs. All rights reserved.
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using System;
-using Dolittle.TimeSeries.Modules;
+using RaaLabs.TimeSeries.Modules;
 
-namespace Dolittle.TimeSeries.IdentityMapper
+namespace RaaLabs.TimeSeries.IdentityMapper
 {
     /// <summary>
     /// Exception that gets thrown when a <see cref="Tag"/> is missing in a <see cref="Source"/>

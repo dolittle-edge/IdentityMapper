@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <Import Project="../Build/MSBuild/default.props"/>
+    <Import Project="../default.props"/>
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp2.1</TargetFramework>
-        <AssemblyName>Dolittle.TimeSeries.IdentityMapper</AssemblyName>
+        <AssemblyName>RaaLabs.TimeSeries.IdentityMapper</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dolittle.TimeSeries.Modules" Version="5.*" />
-        <PackageReference Include="Dolittle.TimeSeries.Modules.IoTEdge" Version="5.*" />
+        <PackageReference Include="RaaLabs.TimeSeries.Modules" Version="6.*" />
+        <PackageReference Include="RaaLabs.TimeSeries.Modules.IoTEdge" Version="6.*" />
     </ItemGroup>
 </Project>
