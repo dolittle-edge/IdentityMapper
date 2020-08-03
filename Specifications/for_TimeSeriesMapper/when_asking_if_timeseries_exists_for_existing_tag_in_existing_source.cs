@@ -28,8 +28,8 @@ namespace RaaLabs.TimeSeries.IdentityMapper.for_TimeSeriesMapper
             mapper = new TimeSeriesMapper(new TimeSeriesMap(
                 new Dictionary<Source, TimeSeriesByTag>
                 {
-                    { source, new TimeSeriesByTag(new Dictionary<Tag, RaaLabs.TimeSeries.Modules.TimeSeries> {{ tag, time_series }} )},
-                    { other_source, new TimeSeriesByTag(new Dictionary<Tag, RaaLabs.TimeSeries.Modules.TimeSeries> {{ other_tag, other_time_series }} )}
+                    { source, new TimeSeriesByTag(new Dictionary<Tag, RaaLabs.TimeSeries.TimeSeries> {{ tag, time_series }} )},
+                    { other_source, new TimeSeriesByTag(new Dictionary<Tag, RaaLabs.TimeSeries.TimeSeries> {{ other_tag, other_time_series }} )}
                 }
             ));
         };

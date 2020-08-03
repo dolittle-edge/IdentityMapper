@@ -24,7 +24,7 @@ namespace RaaLabs.TimeSeries.IdentityMapper.for_TimeSeriesMapper
             mapper = new TimeSeriesMapper(new TimeSeriesMap(
                 new Dictionary<Source, TimeSeriesByTag>
                 {
-                    { source, new TimeSeriesByTag(new Dictionary<Tag, RaaLabs.TimeSeries.Modules.TimeSeries>()) }
+                    { source, new TimeSeriesByTag(new Dictionary<Tag, RaaLabs.TimeSeries.TimeSeries>()) }
                 }
             ));
         };
