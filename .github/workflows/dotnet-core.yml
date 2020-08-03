@@ -39,11 +39,10 @@ jobs:
       run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/ /p:MergeWith=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.json /p:CoverletOutputFormat=\"opencover,json\" -m:1
 
     - name: Upload coverage to CodeCov
-      if: ${{ steps.context.outputs.should-publish == 'true' }}
       run: bash <(curl -s https://codecov.io/bash) -f "$FILE_PATH"
       env:
         FILE_PATH: ${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.opencover.xml
-        
+
     - name: Build Docker image
       uses: docker/build-push-action@v1
       if: ${{ env.DOCKER_HUB_REPO != '' }}
