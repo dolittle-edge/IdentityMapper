@@ -3,7 +3,7 @@ name: .NET Core
 env:
   PRERELEASE_BRANCHES: experimental,alpha,beta,rc # Comma separated list of prerelease branch names. 'alpha,rc, ...'
   DOCKER_HUB_REPO: shipos/timeseries-identitymapper #  The docker hub repo to push to
-
+  COVERAGE_FOLDER: Coverage
 on:
   push:
     branches:
@@ -35,6 +35,8 @@ jobs:
       run: dotnet build --no-restore --configuration Release
     - name: Test
       run: dotnet test --configuration Release --no-build
+    - name: Test and report coverage
+      run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/ /p:MergeWith=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.json /p:CoverletOutputFormat=\"opencover,json\" -m:1
 
     - name: Build Docker image
       uses: docker/build-push-action@v1
@@ -77,3 +79,9 @@ jobs:
       with:
         cascading-release: ${{ steps.context.outputs.cascading-release }}
         version: ${{ steps.increment-version.outputs.next-version }}
+
+    - name: Upload coverage to CodeCov
+      if: ${{ steps.context.outputs.should-publish == 'true' }}
+      run: bash <(curl -s https://codecov.io/bash) -f "$FILE_PATH"
+      env:
+        FILE_PATH: ${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.opencover.xml
