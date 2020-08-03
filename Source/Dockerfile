@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-runtime-stretch-slim as base
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 
 ARG CONFIGURATION=Release
 
@@ -16,7 +16,7 @@ USER moduleuser
 RUN if [ "$CONFIGURATION" = "debug" ] ; then curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l ~/vsdbg ; fi
 
 
-FROM microsoft/dotnet:2.1-sdk AS build-env
+FROM mcr.microsoft.com/dotnet/core/runtime:3.1-buster-slim
 WORKDIR /app
 
 ARG CONFIGURATION
