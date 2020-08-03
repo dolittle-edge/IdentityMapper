@@ -2,7 +2,7 @@ name: .NET Core
 
 env:
   PRERELEASE_BRANCHES: experimental,alpha,beta,rc # Comma separated list of prerelease branch names. 'alpha,rc, ...'
-  DOCKER_HUB_REPO: shipos/timeseries-identitymapper #  The docker hub repo to push to
+  DOCKER_HUB_REPO: shipos/timeseries-identitymapper #  The docker hub repo to push  to
 
 on:
   push:
