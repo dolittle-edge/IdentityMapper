@@ -1,6 +1,8 @@
 # Identity Mapper
 
-[![Build Status](https://dolittle.visualstudio.com/Dolittle%20open-source%20repositories/_apis/build/status/dolittle-timeseries.IdentityMapper?branchName=master)](https://dolittle.visualstudio.com/Dolittle%20open-source%20repositories/_build/latest?definitionId=15&branchName=master)
+![CI/CD](https://github.com/RaaLabs/IdentityMapper/workflows/.NET%20Core/badge.svg)
+[![codecov](https://codecov.io/gh/Raalabs/IdentityMapper.Common/branch/master/graph/badge.svg)](https://codecov.io/gh/Raalabs/IdentityMapper)
+
 
 ## Cloning
 

@@ -1,0 +1,17 @@
+<Project>
+    
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <IsTestProject>true</IsTestProject>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Coverlet.MsBuild" Version="2.9.0" />
+        <PackageReference Include="Machine.Specifications.Runner.VisualStudio" Version="2.9.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+        <PackageReference Include="Machine.Specifications" Version="1.0.0" />
+        <PackageReference Include="Machine.Specifications.Should" Version="1.0.0" />
+        <PackageReference Include="moq" Version="4.13.*" />
+
+    </ItemGroup>
+</Project>
