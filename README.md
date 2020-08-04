@@ -1,7 +1,7 @@
 # Identity Mapper
 
 ![CI/CD](https://github.com/RaaLabs/IdentityMapper/workflows/.NET%20Core/badge.svg)
-[![codecov](https://codecov.io/gh/Raalabs/IdentityMapper.Common/branch/master/graph/badge.svg)](https://codecov.io/gh/Raalabs/IdentityMapper)
+[![codecov](https://codecov.io/gh/Raalabs/IdentityMapper/branch/master/graph/badge.svg)](https://codecov.io/gh/Raalabs/IdentityMapper)
 
 
 ## Cloning
