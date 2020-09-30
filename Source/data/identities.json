@@ -1,6 +1,12 @@
 {
-    "SomeSystem": {
+    "SomeSource": {
         "SomeTag": "c51ff4fc-13ad-4dae-bc78-e82fa2887847"
+    },
+    "TempSensor": {
+        "machineTemperature": "c51ff4fc-13ad-4dae-bc78-e82fa2887847",
+        "machinePressure": "5435f5e3-0f46-4116-902a-6c94343a4273",
+        "ambientTemperature": "93ffd154-6c9c-4dda-98e0-11f38928b6cd",
+        "ambientHumidity": "c56074d1-6cd9-4fd2-8d22-60b2d8dc521b"
     },
     "sim-test": {
         "Generator1_Power": "ea63e51d-7d3a-47c4-be17-447b8cb32d0d",
