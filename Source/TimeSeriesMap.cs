@@ -15,7 +15,8 @@ namespace RaaLabs.TimeSeries.IdentityMapper
     [Name("identities")]
     public class TimeSeriesMap : 
         ReadOnlyDictionary<Source, TimeSeriesByTag>,
-        IConfigurationObject
+        IConfigurationObject,
+        ITriggerAppRestartOnChange
     {
         /// <summary>
         /// Initializes a new instace of <see cref="TimeSeriesMap"/>
