@@ -17,13 +17,11 @@ namespace RaaLabs.IdentityMapper
 
             builder.RegisterModule<Common.Modules.EventHandling.EventHandling>();
             builder.RegisterModule<Common.Modules.EdgeHub.EdgeHub>();
-            builder.RegisterModule<Common.Modules.Kafka.Kafka>();
             builder.RegisterModule<Common.Modules.Configuration.Configuration>();
             builder.RegisterModule<Common.Modules.Logging.Logging>();
 
-            builder.RegisterType<IdentityMapperHandler>().AsSelf();
-            builder.RegisterType<IotEdgeMessageProducer>().AsSelf();
-            builder.RegisterType<TimeSeriesMapper>().AsSelf();
+            builder.RegisterType<IdentityMapperHandler>();
+            builder.RegisterType<TimeSeriesMapper>();
 
             var container = builder.Build();
 

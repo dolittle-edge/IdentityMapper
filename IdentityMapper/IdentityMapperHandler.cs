@@ -11,7 +11,7 @@ namespace RaaLabs.IdentityMapper
         private readonly TimeSeriesMapper _mapper;
         private readonly ILogger _logger;
 
-        public event EventEmitter<EdgeHubDataPointRemapped> IotEdgeMessageRemapped;
+        public event EventEmitter<EdgeHubDataPointRemapped> SendEvent;
 
         public IdentityMapperHandler(TimeSeriesMapper mapper, ILogger logger)
         {
@@ -27,7 +27,7 @@ namespace RaaLabs.IdentityMapper
                 var remapped = RemapDataPoint(@event);
                 _logger.Information("Remapped: {EdgeHubEvent}", JsonConvert.SerializeObject(remapped));
 
-                IotEdgeMessageRemapped(remapped);
+                SendEvent(remapped);
             }
             catch (Exception e)
             {
