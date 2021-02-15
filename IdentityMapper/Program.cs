@@ -1,6 +1,9 @@
-﻿using Autofac;
-using Serilog;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using RaaLabs.Edge.Modules.EventHandling;
+using RaaLabs.Edge.Modules.EdgeHub;
+using RaaLabs.Edge.Modules.Configuration;
+using RaaLabs.Edge.Modules.Logging;
+using RaaLabs.Edge.Modules;
 
 namespace RaaLabs.IdentityMapper
 {
@@ -13,30 +16,16 @@ namespace RaaLabs.IdentityMapper
 
         private static async Task Run()
         {
-            ContainerBuilder builder = new ContainerBuilder();
+            var application = new ApplicationBuilder()
+                .WithModule<EventHandling>()
+                .WithModule<EdgeHub>()
+                .WithModule<Configuration>()
+                .WithModule<Logging>()
+                .WithHandler<IdentityMapperHandler>()
+                .WithType<TimeSeriesMapper>()
+                .Build();
 
-            builder.RegisterModule<Common.Modules.EventHandling.EventHandling>();
-            builder.RegisterModule<Common.Modules.EdgeHub.EdgeHub>();
-            builder.RegisterModule<Common.Modules.Configuration.Configuration>();
-            builder.RegisterModule<Common.Modules.Logging.Logging>();
-
-            builder.RegisterType<IdentityMapperHandler>();
-            builder.RegisterType<TimeSeriesMapper>();
-
-            var container = builder.Build();
-
-
-            using var scope = container.BeginLifetimeScope();
-
-            var logger = scope.Resolve<ILogger>();
-            logger.Information("Context built, starting application.");
-
-            var handler = scope.Resolve<IdentityMapperHandler>();
-
-            while (true)
-            {
-                await Task.Delay(1000);
-            }
+            await application.Run();
         }
     }
 }

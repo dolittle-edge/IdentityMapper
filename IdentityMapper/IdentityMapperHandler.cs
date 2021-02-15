@@ -1,6 +1,6 @@
-﻿using IdentityMapper.events;
-using Newtonsoft.Json;
-using RaaLabs.IdentityMapper.Common;
+﻿using Newtonsoft.Json;
+using RaaLabs.Edge.Modules.EventHandling;
+using RaaLabs.IdentityMapper.events;
 using Serilog;
 using System;
 

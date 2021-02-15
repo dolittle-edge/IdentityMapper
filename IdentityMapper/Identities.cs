@@ -1,4 +1,4 @@
-﻿using RaaLabs.IdentityMapper.Common;
+﻿using RaaLabs.Edge.Modules.Configuration;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
