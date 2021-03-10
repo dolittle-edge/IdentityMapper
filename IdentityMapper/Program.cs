@@ -2,8 +2,10 @@
 using RaaLabs.Edge.Modules.EventHandling;
 using RaaLabs.Edge.Modules.EdgeHub;
 using RaaLabs.Edge.Modules.Configuration;
-using RaaLabs.Edge.Modules.Logging;
 using RaaLabs.Edge.Modules;
+using System.Collections.Generic;
+using System.Linq;
+using RaaLabs.Edge;
 
 namespace RaaLabs.IdentityMapper
 {
@@ -20,10 +22,11 @@ namespace RaaLabs.IdentityMapper
                 .WithModule<EventHandling>()
                 .WithModule<EdgeHub>()
                 .WithModule<Configuration>()
-                .WithModule<Logging>()
                 .WithHandler<IdentityMapperHandler>()
                 .WithType<TimeSeriesMapper>()
                 .Build();
+
+            var builder = new ApplicationBuilder();
 
             await application.Run();
         }
