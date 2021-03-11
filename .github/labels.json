@@ -1,0 +1,5 @@
+[
+    { "name": "patch", "color": "00FABA", "description": "Release patch version" },
+    { "name": "minor", "color": "FAFA00", "description": "Release minor version" },
+    { "name": "major", "color": "FA0000", "description": "Release major version" }
+]

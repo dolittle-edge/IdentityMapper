@@ -1,0 +1,87 @@
+name: .NET Core
+
+env:
+  PRERELEASE_BRANCHES: experimental,alpha,beta,rc # Comma separated list of prerelease branch names. 'alpha,rc, ...'
+  DOCKER_HUB_REPO: ${{ secrets.RAAEDGE_LOGIN_SERVER }}/identitymapper #  The docker hub repo to push to
+  COVERAGE_FOLDER: Coverage
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  ci:
+    name: Integration
+    runs-on: ubuntu-latest
+    outputs:
+      should-publish: ${{ steps.context.outputs.should-publish }}
+      current-version: ${{ steps.context.outputs.current-version }}
+      release-type: ${{ steps.context.outputs.release-type }}
+      cascading-release: ${{ steps.context.outputs.cascading-release }}
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: recursive 
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '5.0.x'
+    - name: Install dependencies
+      run: dotnet restore --no-cache --verbosity normal
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+    - name: Test and report coverage
+      run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/ /p:MergeWith=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage/ /p:CoverletOutputFormat=opencover
+
+    - name: 'Azure login'
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.RAAEDGE_LOGIN_SERVER }}
+        username: ${{ secrets.RAAEDGE_ACR_USERNAME }}
+        password: ${{ secrets.RAAEDGE_ACR_PASSWORD }}
+
+    - name: Docker Build
+      shell: bash
+      run: |
+          docker build --no-cache -f $GITHUB_WORKSPACE/Source/Dockerfile -t ${{ env.DOCKER_HUB_REPO }}:${{ github.sha }} .
+    - name: Echo
+      shell: bash
+      run: |
+          echo $GITHUB_WORKSPACE
+    - name: Echo2
+      shell: bash
+      run: |
+          echo $DOCKER_HUB_REPO
+
+    - name: Establish context
+      id: context
+      uses: dolittle/establish-context-action@v2
+      with:
+        prerelease-branches: ${{ env.PRERELEASE_BRANCHES }}
+
+    - name: Increment version
+      id: increment-version
+      if: ${{ steps.context.outputs.should-publish == 'true' }}
+      uses: dolittle/increment-version-action@v2
+      with:
+        version: ${{ steps.context.outputs.current-version }}
+        release-type: ${{ steps.context.outputs.release-type }}
+
+    - name: Docker push
+      if: ${{ steps.context.outputs.should-publish == 'true' && env.DOCKER_HUB_REPO != '' }}
+      run: |
+          docker build --no-cache -f $GITHUB_WORKSPACE/Source/Dockerfile -t ${{ env.DOCKER_HUB_REPO }}:${{ steps.increment-version.outputs.next-version }} .
+          docker push ${{ env.DOCKER_HUB_REPO }}:${{ steps.increment-version.outputs.next-version }}
+        
+    - name: Create GitHub Release
+      uses: dolittle/github-release-action@v1
+      if: ${{ steps.context.outputs.should-publish == 'true' }}
+      with:
+        cascading-release: ${{ steps.context.outputs.cascading-release }}
+        version: ${{ steps.increment-version.outputs.next-version }}
