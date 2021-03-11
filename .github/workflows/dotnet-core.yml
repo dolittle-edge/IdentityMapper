@@ -35,5 +35,5 @@ jobs:
     - name: Echo1
       shell: bash
       run: |
-          echo $GITHUB_REPOSITORY
-   
+          echo ${{ github.event.repository.name }}
+    
