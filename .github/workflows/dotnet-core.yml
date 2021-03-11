@@ -2,7 +2,7 @@ name: .NET Core
 
 env:
   PRERELEASE_BRANCHES: experimental,alpha,beta,rc # Comma separated list of prerelease branch names. 'alpha,rc, ...'
-  DOCKER_HUB_REPO: ${{ secrets.RAAEDGE_LOGIN_SERVER }}/identitymapper #  The docker hub repo to push to
+  DOCKER_HUB_REPO: raaedge.azurecr.io/identitymapper #  The docker hub repo to push to
   COVERAGE_FOLDER: Coverage
   SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -54,10 +54,6 @@ jobs:
       shell: bash
       run: |
           echo $GITHUB_WORKSPACE
-    - name: Echo2
-      shell: bash
-      run: |
-          echo $DOCKER_HUB_REPO
 
     - name: Establish context
       id: context
@@ -85,3 +81,13 @@ jobs:
       with:
         cascading-release: ${{ steps.context.outputs.cascading-release }}
         version: ${{ steps.increment-version.outputs.next-version }}
+
+    - name: SonarScanner for .NET Core with pull request decoration support
+      uses: highbyte/sonarscan-dotnet@2.0
+      with:
+        sonarProjectKey: RaaLabs_$GITHUB_WORKSPACE
+        sonarProjectName:  $GITHUB_WORKSPACE
+        sonarOrganization: raalabs
+        dotnetTestArguments: --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+        sonarBeginArguments: /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"        
+      
