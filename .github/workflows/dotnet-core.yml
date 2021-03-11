@@ -82,12 +82,3 @@ jobs:
         cascading-release: ${{ steps.context.outputs.cascading-release }}
         version: ${{ steps.increment-version.outputs.next-version }}
 
-    - name: SonarScanner for .NET Core with pull request decoration support
-      uses: highbyte/sonarscan-dotnet@2.0
-      with:
-        sonarProjectKey: RaaLabs_$GITHUB_WORKSPACE
-        sonarProjectName:  $GITHUB_WORKSPACE
-        sonarOrganization: raalabs
-        dotnetTestArguments: --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
-        sonarBeginArguments: /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"        
-      
