@@ -3,9 +3,7 @@ WORKDIR /app
 
 VOLUME [ "/app/data" ]
 
-# COPY default.props ./default.props
-
-COPY IdentityMapper/ ./Source/
+COPY Source/ ./Source/
 
 WORKDIR /app/Source
 
