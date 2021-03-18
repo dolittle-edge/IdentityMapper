@@ -2,7 +2,7 @@
 
 namespace RaaLabs.IdentityMapper
 {
-    class TimeSeriesMapper
+    public class TimeSeriesMapper
     {
         private readonly Identities _identities;
 
