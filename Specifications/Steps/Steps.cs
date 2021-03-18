@@ -1,3 +1,7 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) RaaLabs. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
 using TechTalk.SpecFlow;
 using System.Linq;
 using BoDi;
@@ -14,6 +18,7 @@ namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
         private string _mappedValue;
         private Dictionary<(string, string), string> _existingValues;
         private HashSet<(string, string)> _nonExistingValues;
+        private Exception _exception;
         public Steps(TimeSeriesMapper mapper)
         {
             _mapper = mapper;
@@ -30,10 +35,10 @@ namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
                 var mappedValue = _mapper.GetTimeSeriesFor(source, tag);
                 _existingValues[(source, tag)] = mappedValue;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 _nonExistingValues.Add((source, tag));
-
+                _exception = ex;
             }
         }
 
@@ -84,6 +89,12 @@ namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
                 var tag = row["Tag"];
                 _nonExistingValues.Should().Contain((source, tag));
             }
+        }
+        [Then(@"the exception ""(.*)"" is thrown with message ""(.*)""")]
+        public void ThenTheExceptionMissingTagInSourceWillWillBeThrown(string type, string message)
+        {
+            _exception.Message.Should().Be(message);
+            _exception.GetType().Name.Should().Be(type);
         }
 
     }
