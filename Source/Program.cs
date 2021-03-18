@@ -26,8 +26,6 @@ namespace RaaLabs.IdentityMapper
                 .WithType<TimeSeriesMapper>()
                 .Build();
 
-            var builder = new ApplicationBuilder();
-
             await application.Run();
         }
     }
