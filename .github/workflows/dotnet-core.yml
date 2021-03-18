@@ -2,8 +2,10 @@ name: .NET Core
 
 env:
   PRERELEASE_BRANCHES: experimental,alpha,beta,rc # Comma separated list of prerelease branch names. 'alpha,rc, ...'
-  DOCKER_HUB_REPO: shipos/timeseries-identitymapper #  The docker hub repo to push to
+  DOCKER_HUB_REPO: ${{ secrets.RAAEDGE_LOGIN_SERVER }}/identitymapper #  The docker hub repo to push to
   COVERAGE_FOLDER: Coverage
+  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
   push:
@@ -29,27 +31,25 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '3.1.x'
+        dotnet-version: '5.0.x'
     - name: Install dependencies
       run: dotnet restore --no-cache --verbosity normal
     - name: Build
       run: dotnet build --no-restore --configuration Release
-
     - name: Test and report coverage
-      run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/ /p:MergeWith=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.json /p:CoverletOutputFormat=\"opencover,json\" -m:1
+      run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/ /p:MergeWith=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage/ /p:CoverletOutputFormat=opencover
 
-
-
-    - name: Build Docker image
-      uses: docker/build-push-action@v1
-      if: ${{ env.DOCKER_HUB_REPO != '' }}
+    - name: 'Azure login'
+      uses: azure/docker-login@v1
       with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: ${{ env.DOCKER_HUB_REPO }}
-        dockerfile: ./Source/Dockerfile
-        tag_with_sha: true
-        push: false
+        login-server: ${{ secrets.RAAEDGE_LOGIN_SERVER }}
+        username: ${{ secrets.RAAEDGE_ACR_USERNAME }}
+        password: ${{ secrets.RAAEDGE_ACR_PASSWORD }}
+
+    - name: Docker Build
+      shell: bash
+      run: |
+          docker build --no-cache -f $GITHUB_WORKSPACE/Source/Dockerfile -t ${{ env.DOCKER_HUB_REPO }}:${{ github.sha }} .
 
     - name: Establish context
       id: context
@@ -65,15 +65,11 @@ jobs:
         version: ${{ steps.context.outputs.current-version }}
         release-type: ${{ steps.context.outputs.release-type }}
 
-    - name: Push to Docker Hub
-      uses: docker/build-push-action@v1
+    - name: Docker push
       if: ${{ steps.context.outputs.should-publish == 'true' && env.DOCKER_HUB_REPO != '' }}
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        repository: ${{ env.DOCKER_HUB_REPO }}
-        dockerfile: ./Source/Dockerfile
-        tags: ${{ steps.increment-version.outputs.next-version }}
+      run: |
+          docker build --no-cache -f $GITHUB_WORKSPACE/Source/Dockerfile -t ${{ env.DOCKER_HUB_REPO }}:${{ steps.increment-version.outputs.next-version }} .
+          docker push ${{ env.DOCKER_HUB_REPO }}:${{ steps.increment-version.outputs.next-version }}
         
     - name: Create GitHub Release
       uses: dolittle/github-release-action@v1
@@ -81,10 +77,13 @@ jobs:
       with:
         cascading-release: ${{ steps.context.outputs.cascading-release }}
         version: ${{ steps.increment-version.outputs.next-version }}
+  
+    - name: SonarScanner for .NET Core with pull request decoration support
+      uses: highbyte/sonarscan-dotnet@2.0
+      with:
+        sonarProjectKey: RaaLabs_${{ github.event.repository.name }}
+        sonarProjectName:  ${{ github.event.repository.name }}
+        sonarOrganization: raalabs
+        dotnetTestArguments: --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover
+        sonarBeginArguments: /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"        
 
-    - name: Upload coverage to CodeCov
-      if: ${{ steps.context.outputs.should-publish == 'true' }}
-      run: bash <(curl -s https://codecov.io/bash) -f "$FILE_PATH"
-      env:
-        FILE_PATH: ${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage.opencover.xml
-        

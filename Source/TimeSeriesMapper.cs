@@ -1,54 +1,31 @@
-/*---------------------------------------------------------------------------------------------
- *  Copyright (c) RaaLabs. All rights reserved.
- *  Licensed under the MIT License. See LICENSE in the project root for license information.
- *--------------------------------------------------------------------------------------------*/
-using System.Collections.Generic;
-using RaaLabs.TimeSeries.Modules;
-using Dolittle.IO;
-using Dolittle.Serialization.Json;
+﻿using System;
 
-namespace RaaLabs.TimeSeries.IdentityMapper
+namespace RaaLabs.IdentityMapper
 {
-    /// <summary>
-    /// Represents an implementation of <see cref="ITimeSeriesMapper"/>
-    /// </summary>
-    public class TimeSeriesMapper : ITimeSeriesMapper
+    public class TimeSeriesMapper
     {
-        readonly TimeSeriesMap _timeSeriesMap;
+        private readonly Identities _identities;
 
-        /// <summary>
-        /// Initializes a new instance of <see cref="TimeSeriesMapper"/>
-        /// </summary>
-        /// <param name="timeSeriesMap"><see cref="TimeSeriesMap"/></param>
-        public TimeSeriesMapper(TimeSeriesMap timeSeriesMap)
+        public TimeSeriesMapper(Identities identities)
         {
-            _timeSeriesMap = timeSeriesMap;
+            _identities = identities;
         }
 
-        /// <inheritdoc/>
-        public RaaLabs.TimeSeries.TimeSeries GetTimeSeriesFor(Source source, Tag tag)
+        public string GetTimeSeriesFor(string source, string tag)
         {
             ThrowIfMissingSystem(source);
             ThrowIfTagIsMissingInSystem(source, tag);
-            return _timeSeriesMap[source][tag];
+            return _identities[source][tag];
         }
 
-        /// <inheritdoc/>
-        public bool HasTimeSeriesFor(Source source, Tag tag)
+        void ThrowIfMissingSystem(string source)
         {
-            if( !_timeSeriesMap.ContainsKey(source)) return false;
-            if( !_timeSeriesMap[source].ContainsKey(tag)) return false;
-            return true;
+            if (!_identities.ContainsKey(source)) throw new Exception($"Missing source: {source}");
         }
 
-        void ThrowIfMissingSystem(Source source)
+        void ThrowIfTagIsMissingInSystem(string source, string tag)
         {
-            if( !_timeSeriesMap.ContainsKey(source)) throw new MissingSource(source);
-        }
-
-        void ThrowIfTagIsMissingInSystem(Source source, Tag tag)
-        {
-            if( !_timeSeriesMap[source].ContainsKey(tag)) throw new MissingTagInSource(source, tag);
+            if (!_identities[source].ContainsKey(tag)) throw new Exception($"Missing tag '{tag}' in '{source}'");
         }
     }
 }
