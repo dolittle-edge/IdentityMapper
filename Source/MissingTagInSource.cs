@@ -9,13 +9,13 @@ namespace RaaLabs.IdentityMapper
     /// <summary>
     /// Exception that gets thrown when a <see cref="Tag"/> is missing in a <see cref="Source"/>
     /// </summary>
-    public class MissingTagInSource : Exception
+    public class MissingTagInSourceException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of <see cref="MissingTagInSource"/>
+        /// Initializes a new instance of <see cref="MissingTagInSourceException"/>
         /// </summary>
         /// <param name="source"><see cref="Source"/> the <see cref="Tag"/> is missing</param>
         /// <param name="tag"><see cref="Tag"/> that is missing</param>
-        public MissingTagInSource(string source, string tag) : base($"Tag '{tag}' is missing in source '{source}'") {}
+        public MissingTagInSourceException(string source, string tag) : base($"Tag '{tag}' is missing in source '{source}'") {}
     }
 }

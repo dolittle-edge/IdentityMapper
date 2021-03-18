@@ -20,12 +20,12 @@ namespace RaaLabs.IdentityMapper
 
         void ThrowIfMissingSystem(string source)
         {
-            if (!_identities.ContainsKey(source)) throw new MissingSource(source);
+            if (!_identities.ContainsKey(source)) throw new MissingSourceException(source);
         }
 
         void ThrowIfTagIsMissingInSystem(string source, string tag)
         {
-            if (!_identities[source].ContainsKey(tag)) throw new MissingTagInSource(source, tag);
+            if (!_identities[source].ContainsKey(tag)) throw new MissingTagInSourceException(source, tag);
         }
     }
 }

@@ -28,10 +28,10 @@ Feature: Timeseries mapping
             | Modbus         | sauron  |
 
 
-    Scenario: Check if MissingSource exception are thrown
+    Scenario: Check if missing source exception are thrown
         When source Random and tag MA80 is requested
-        Then the exception "MissingSource" is thrown with message "Source 'Random' does not exist"
+        Then the exception "MissingSourceException" is thrown with message "Source 'Random' does not exist"
 
-    Scenario: Check if MissingTagInSource exception are thrown
+    Scenario: Check if missing tag in source exception are thrown
         When source NMEA and tag Gimli is requested
-        Then the exception "MissingTagInSource" is thrown with message "Tag 'Gimli' is missing in source 'NMEA'"
+        Then the exception "MissingTagInSourceException" is thrown with message "Tag 'Gimli' is missing in source 'NMEA'"

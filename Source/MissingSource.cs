@@ -7,12 +7,12 @@ using System;
 
 namespace RaaLabs.IdentityMapper
 {
-   public class MissingSource : Exception
+    public class MissingSourceException : Exception
     {
         /// <summary>
-        /// Initalizes a new instance of <see cref="MissingSource"/>
+        /// Initalizes a new instance of <see cref="MissingSourceException"/>
         /// </summary>
         /// <param name="source"><see cref="Source"/> that does not exist</param>
-        public MissingSource(string source) : base($"Source '{source}' does not exist") { }
+        public MissingSourceException(string source) : base($"Source '{source}' does not exist") { }
     }
 }
