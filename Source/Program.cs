@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Diagnostics.CodeAnalysis;
 using RaaLabs.Edge.Modules.EventHandling;
 using RaaLabs.Edge.Modules.EdgeHub;
 using RaaLabs.Edge.Modules.Configuration;
@@ -9,6 +10,7 @@ using RaaLabs.Edge;
 
 namespace RaaLabs.IdentityMapper
 {
+    [ExcludeFromCodeCoverage]
     class Program
     {
         static void Main(string[] args)

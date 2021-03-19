@@ -1,7 +1,9 @@
-﻿using RaaLabs.Edge.Modules.EdgeHub;
+﻿using System.Diagnostics.CodeAnalysis;
+using RaaLabs.Edge.Modules.EdgeHub;
 
 namespace RaaLabs.IdentityMapper.events
 {
+    [ExcludeFromCodeCoverage]
     [InputName("events")]
     class EdgeHubDataPointReceived : IEdgeHubIncomingEvent
     {
