@@ -37,7 +37,7 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration Release
     - name: Test and report coverage
-      run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/ /p:MergeWith=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage/ /p:CoverletOutputFormat=opencover /p:ExcludeByFile=\"**/Source/events/*.cs,**/Source/Program.cs\"
+      run: dotnet test --configuration Release --no-build /p:CollectCoverage=true /p:CoverletOutput=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/ /p:MergeWith=${{ github.workspace }}/${{ env.COVERAGE_FOLDER }}/coverage/ /p:CoverletOutputFormat=opencover /p:ExcludeByFile="**/Source/events/*.cs,**/Source/Program.cs"
 
     - name: 'Azure login'
       uses: azure/docker-login@v1
@@ -84,6 +84,6 @@ jobs:
         sonarProjectKey: RaaLabs_${{ github.event.repository.name }}
         sonarProjectName:  ${{ github.event.repository.name }}
         sonarOrganization: raalabs
-        dotnetTestArguments: --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover /p:ExcludeByFile=\"**/Source/events/*.cs,**/Source/Program.cs\"
+        dotnetTestArguments: --logger trx --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=opencover /p:ExcludeByFile="**/Source/events/*.cs,**/Source/Program.cs"
         sonarBeginArguments: /d:sonar.cs.opencover.reportsPaths="**/TestResults/**/coverage.opencover.xml" -d:sonar.cs.vstest.reportsPaths="**/TestResults/*.trx"        
 
