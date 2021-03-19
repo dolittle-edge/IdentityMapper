@@ -1,3 +1,7 @@
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) RaaLabs. All rights reserved.
+ *  Licensed under the MIT License. See LICENSE in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
 using TechTalk.SpecFlow;
 using System.Linq;
 using BoDi;
@@ -12,7 +16,6 @@ namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
 
         public TagMappingSteps(IObjectContainer container)
         {
-
             _container = container;
         }
 

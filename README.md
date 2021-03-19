@@ -1,12 +1,3 @@
-dotnet new -i SpecFlow.Templates.DotNet
+# IdentityMapper
 
-mkdir Specifications 
-
-dotnet new specflowproject --name IdentityMapper.Specs
-
-IdentityMapper.Specs.csproj --> change to      <TargetFramework>net5.0</TargetFramework>
-
-dotnet add package MSTest.TestFramework --version 2.2.1
-dotnet add package MSTest.TestAdapter --version 2.2.1
-dotnet add package FluentAssertions --version 5.10.3
-dotnet add package coverlet.collector --version 3.0.3
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=RaaLabs_IdentityMapper&metric=coverage)](https://sonarcloud.io/dashboard?id=RaaLabs_IdentityMapper)
