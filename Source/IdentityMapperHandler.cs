@@ -4,10 +4,12 @@ using RaaLabs.Edge.Modules.EventHandling;
 using RaaLabs.IdentityMapper.events;
 using Serilog;
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace RaaLabs.IdentityMapper
 {
-    class IdentityMapperHandler : IConsumeEvent<EdgeHubDataPointReceived>, IProduceEvent<EdgeHubDataPointRemapped>
+    [ExcludeFromCodeCoverage] // Tested in system integration test
+    public class IdentityMapperHandler : IConsumeEvent<EdgeHubDataPointReceived>, IProduceEvent<EdgeHubDataPointRemapped>
     {
         private readonly TimeSeriesMapper _mapper;
         private readonly ILogger _logger;
