@@ -3,8 +3,6 @@
  *  Licensed under the MIT License. See LICENSE in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
 using TechTalk.SpecFlow;
-using System.Linq;
-using BoDi;
 using System;
 using FluentAssertions;
 using System.Collections.Generic;

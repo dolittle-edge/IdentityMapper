@@ -5,7 +5,7 @@ namespace RaaLabs.IdentityMapper.events
 {
     [ExcludeFromCodeCoverage]
     [OutputName("Translated")]
-    class EdgeHubDataPointRemapped : IEdgeHubOutgoingEvent
+    public class EdgeHubDataPointRemapped : IEdgeHubOutgoingEvent
     {
         public string Timeseries { get; set; }
 

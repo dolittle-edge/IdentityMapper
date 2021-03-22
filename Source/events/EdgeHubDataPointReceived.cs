@@ -5,7 +5,7 @@ namespace RaaLabs.IdentityMapper.events
 {
     [ExcludeFromCodeCoverage]
     [InputName("events")]
-    class EdgeHubDataPointReceived : IEdgeHubIncomingEvent
+    public class EdgeHubDataPointReceived : IEdgeHubIncomingEvent
     {
         public string Source { get; set; }
 
