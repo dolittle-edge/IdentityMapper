@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using RaaLabs.IdentityMapper.events;
 using RaaLabs.Edge.Modules.EdgeHub;
 using Autofac;
+using System.Globalization;
 
 namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
 {
@@ -55,8 +56,8 @@ namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
                 {
                     Source = row["Source"],
                     Tag = row["Tag"],
-                    Value = float.Parse(row["Value"]),
-                    Timestamp = long.Parse(row["Timestamp"])
+                    Value = float.Parse(row["Value"], CultureInfo.InvariantCulture.NumberFormat),
+                    Timestamp = long.Parse(row["Timestamp"], CultureInfo.InvariantCulture.NumberFormat)
                 };
                 client.SimulateIncomingEvent("events", JsonConvert.SerializeObject(incomingEvent));
             }
@@ -69,8 +70,8 @@ namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
             NullIotModuleClient client = (NullIotModuleClient)_appContext.ScopeHolder.Scope.Resolve<IIotModuleClient>();            
             foreach (var (sentMessage, expectedMessage) in client.MessagesSent.Zip(table.Rows))
             {
-                var sent = JsonConvert.DeserializeObject<EdgeHubDataPointRemapped>(sentMessage);
-                ((double)sent.Value).Should().BeApproximately(float.Parse(expectedMessage["Value"]), 0.01);
+                var sent = JsonConvert.DeserializeObject<EdgeHubDataPointRemapped>(sentMessage.Item2);
+                ((double)sent.Value).Should().BeApproximately(float.Parse(expectedMessage["Value"], CultureInfo.InvariantCulture.NumberFormat), 0.01);
 
             }
 
