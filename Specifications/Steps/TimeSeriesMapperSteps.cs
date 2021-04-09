@@ -7,17 +7,17 @@ using System;
 using FluentAssertions;
 using System.Collections.Generic;
 
-namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
+namespace RaaLabs.Edge.IdentityMapper.Specs.StepDefinitions
 {
     [Binding]
-    public class Steps
+    public class TimeSeriesMapperSteps
     {
         private readonly TimeSeriesMapper _mapper;
         private string _mappedValue;
         private Dictionary<(string, string), string> _existingValues;
         private HashSet<(string, string)> _nonExistingValues;
         private Exception _exception;
-        public Steps(TimeSeriesMapper mapper)
+        public TimeSeriesMapperSteps(TimeSeriesMapper mapper)
         {
             _mapper = mapper;
             _existingValues = new Dictionary<(string, string), string>();
