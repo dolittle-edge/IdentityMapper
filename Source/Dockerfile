@@ -18,4 +18,4 @@ COPY --from=build-env /app/Source/out ./
 RUN useradd -ms /bin/bash moduleuser
 USER moduleuser
 
-ENTRYPOINT ["dotnet", "RaaLabs.IdentityMapper.dll"]
+ENTRYPOINT ["dotnet", "RaaLabs.Edge.IdentityMapper.dll"]
