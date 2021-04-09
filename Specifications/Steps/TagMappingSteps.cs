@@ -7,7 +7,7 @@ using System.Linq;
 using BoDi;
 using Serilog;
 
-namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
+namespace RaaLabs.Edge.IdentityMapper.Specs.StepDefinitions
 {
     [Binding]
     public class TagMappingSteps

@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using RaaLabs.Edge;
 using RaaLabs.Edge.Modules.EdgeHub;
 using RaaLabs.Edge.Modules.EventHandling;
 using RaaLabs.Edge.Modules.Configuration;
@@ -8,7 +7,7 @@ using System.Collections.Generic;
 using System.IO.Abstractions.TestingHelpers;
 using System.IO.Abstractions;
 
-namespace RaaLabs.IdentityMapper.Specs.Drivers
+namespace RaaLabs.Edge.IdentityMapper.Specs.Drivers
 {
     public class ApplicationContext
     {

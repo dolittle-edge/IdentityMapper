@@ -5,14 +5,14 @@
 using TechTalk.SpecFlow;
 using System.Linq;
 using FluentAssertions;
-using RaaLabs.IdentityMapper.Specs.Drivers;
+using RaaLabs.Edge.IdentityMapper.Specs.Drivers;
 using Newtonsoft.Json;
-using RaaLabs.IdentityMapper.events;
+using RaaLabs.Edge.IdentityMapper.events;
 using RaaLabs.Edge.Modules.EdgeHub;
 using Autofac;
 using System.Globalization;
 
-namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
+namespace RaaLabs.Edge.IdentityMapper.Specs.StepDefinitions
 {
     [Binding]
     public class SystemIntegrationSteps
@@ -23,7 +23,6 @@ namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
         {
             _appContext = appContext;
         }
-
 
         [Given(@"a config file with the following mapping")]
         public void GivenAConfigFileWithThefollowingMapping(Table table)
@@ -74,10 +73,7 @@ namespace RaaLabs.IdentityMapper.Specs.StepDefinitions
                 ((double)sent.Value).Should().BeApproximately(float.Parse(expectedMessage["Value"], CultureInfo.InvariantCulture.NumberFormat), 0.01);
 
             }
-
         }
-
     }
-
 }
 

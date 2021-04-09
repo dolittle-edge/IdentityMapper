@@ -1,9 +1,8 @@
 using Autofac;
-using RaaLabs.Edge;
 using System.Threading.Tasks;
 
 
-namespace RaaLabs.IdentityMapper.Specs.Drivers
+namespace RaaLabs.Edge.IdentityMapper.Specs.Drivers
 {
     public class ScopeExposer : IRunAsync
     {

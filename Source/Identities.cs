@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace RaaLabs.IdentityMapper
+namespace RaaLabs.Edge.IdentityMapper
 {
     [Name("identities.json")]
     public class Identities : ReadOnlyDictionary<string, TimeSeriesByTag>, IConfiguration
