@@ -7,7 +7,7 @@ using RaaLabs.Edge.Modules.Configuration;
 namespace RaaLabs.Edge.IdentityMapper
 {
     [ExcludeFromCodeCoverage]
-    class Program
+    static class Program
     {
         static void Main(string[] args)
         {
