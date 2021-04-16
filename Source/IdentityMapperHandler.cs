@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
-using RaaLabs.Edge.Modules.EdgeHub;
 using RaaLabs.Edge.Modules.EventHandling;
-using RaaLabs.IdentityMapper.events;
+using RaaLabs.Edge.IdentityMapper.events;
 using Serilog;
 using System;
 
-namespace RaaLabs.IdentityMapper
+namespace RaaLabs.Edge.IdentityMapper
 {
-    class IdentityMapperHandler : IConsumeEvent<EdgeHubDataPointReceived>, IProduceEvent<EdgeHubDataPointRemapped>
+    public class IdentityMapperHandler : IConsumeEvent<EdgeHubDataPointReceived>, IProduceEvent<EdgeHubDataPointRemapped>
     {
         private readonly TimeSeriesMapper _mapper;
         private readonly ILogger _logger;

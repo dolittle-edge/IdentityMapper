@@ -1,11 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using RaaLabs.Edge.Modules.EdgeHub;
 
-namespace RaaLabs.IdentityMapper.events
+namespace RaaLabs.Edge.IdentityMapper.events
 {
     [ExcludeFromCodeCoverage]
     [OutputName("Translated")]
-    class EdgeHubDataPointRemapped : IEdgeHubOutgoingEvent
+    public class EdgeHubDataPointRemapped : IEdgeHubOutgoingEvent
     {
         public string Timeseries { get; set; }
 

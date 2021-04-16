@@ -5,7 +5,7 @@
 
 using System;
 
-namespace RaaLabs.IdentityMapper
+namespace RaaLabs.Edge.IdentityMapper
 {
     public class MissingSourceException : Exception
     {
