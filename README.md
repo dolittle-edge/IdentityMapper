@@ -1,5 +1,5 @@
 # IdentityMapper
-
+[![.NET Core](https://github.com/RaaLabs/IdentityMapper/actions/workflows/dotnet-core.yml/badge.svg)](https://github.com/RaaLabs/IdentityMapper/actions/workflows/dotnet-core.yml)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=RaaLabs_IdentityMapper&metric=coverage)](https://sonarcloud.io/dashboard?id=RaaLabs_IdentityMapper)
 
 This document describes the IdentityMapper module for RaaLabs Edge.
