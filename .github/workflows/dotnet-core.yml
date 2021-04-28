@@ -4,8 +4,6 @@ env:
   PRERELEASE_BRANCHES: experimental,alpha,beta,rc # Comma separated list of prerelease branch names. 'alpha,rc, ...'
   DOCKER_HUB_REPO: ${{ secrets.RAAEDGE_LOGIN_SERVER }}/identitymapper #  The docker hub repo to push to
   COVERAGE_FOLDER: Coverage
-  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 on:
   push:
@@ -28,7 +26,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         submodules: recursive 
-    - name: Setup .NET Core
+    - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: '5.0.x'
@@ -77,3 +75,4 @@ jobs:
       with:
         cascading-release: ${{ steps.context.outputs.cascading-release }}
         version: ${{ steps.increment-version.outputs.next-version }}
+        body: ${{ steps.context.outputs.pr-body }}
