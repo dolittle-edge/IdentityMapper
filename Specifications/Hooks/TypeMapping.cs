@@ -19,8 +19,8 @@ namespace RaaLabs.Edge.IdentityMapper.Specs.Drivers
         public void SetupTypes()
         {
             _typeMapping.Add("IdentityMapperHandler", typeof(IdentityMapperHandler));
-            _typeMapping.Add("EdgeHubDataPointReceived", typeof(events.EdgeHubDataPointReceived));
-            _typeMapping.Add("EdgeHubDataPointRemapped", typeof(events.EdgeHubDataPointRemapped));
+            _typeMapping.Add("EdgeHubDataPointReceived", typeof(Events.EdgeHubDataPointReceived));
+            _typeMapping.Add("EdgeHubDataPointRemapped", typeof(Events.EdgeHubDataPointRemapped));
         }
     }
 }

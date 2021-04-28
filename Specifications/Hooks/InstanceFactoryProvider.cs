@@ -1,5 +1,5 @@
 using BoDi;
-using RaaLabs.Edge.IdentityMapper.events;
+using RaaLabs.Edge.IdentityMapper.Events;
 using RaaLabs.Edge.IdentityMapper.Specs.Drivers;
 using TechTalk.SpecFlow;
 

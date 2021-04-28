@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using RaaLabs.Edge.Modules.EdgeHub;
 
-namespace RaaLabs.Edge.IdentityMapper.events
+namespace RaaLabs.Edge.IdentityMapper.Events
 {
     [ExcludeFromCodeCoverage]
     [OutputName("Translated")]
