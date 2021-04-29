@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RaaLabs.Edge.Modules.EventHandling;
-using RaaLabs.Edge.IdentityMapper.events;
+using RaaLabs.Edge.IdentityMapper.Events;
 using Serilog;
 using System;
 

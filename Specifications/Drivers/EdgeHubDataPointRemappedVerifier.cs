@@ -1,4 +1,4 @@
-using RaaLabs.Edge.IdentityMapper.events;
+using RaaLabs.Edge.IdentityMapper.Events;
 using TechTalk.SpecFlow;
 using FluentAssertions;
 using System.Globalization;

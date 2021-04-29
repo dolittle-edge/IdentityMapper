@@ -1,6 +1,6 @@
 
 using System.Globalization;
-using RaaLabs.Edge.IdentityMapper.events;
+using RaaLabs.Edge.IdentityMapper.Events;
 using TechTalk.SpecFlow;
 
 namespace RaaLabs.Edge.IdentityMapper.Specs.Drivers
@@ -10,7 +10,7 @@ namespace RaaLabs.Edge.IdentityMapper.Specs.Drivers
         public EdgeHubDataPointReceived FromTableRow(TableRow row)
         {
 
-            var edgeHubDataPointReceived = new events.EdgeHubDataPointReceived
+            var edgeHubDataPointReceived = new Events.EdgeHubDataPointReceived
             {
                 Source = row["Source"],
                 Tag = row["Tag"],

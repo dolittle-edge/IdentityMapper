@@ -7,7 +7,7 @@ using System.Linq;
 using FluentAssertions;
 using RaaLabs.Edge.IdentityMapper.Specs.Drivers;
 using Newtonsoft.Json;
-using RaaLabs.Edge.IdentityMapper.events;
+using RaaLabs.Edge.IdentityMapper.Events;
 using RaaLabs.Edge.Modules.EdgeHub;
 using Autofac;
 using System.Globalization;
