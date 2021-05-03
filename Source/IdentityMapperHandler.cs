@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿// Copyright (c) RaaLabs. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using Newtonsoft.Json;
 using RaaLabs.Edge.Modules.EventHandling;
 using RaaLabs.Edge.IdentityMapper.Events;
 using Serilog;

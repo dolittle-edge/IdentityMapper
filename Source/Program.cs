@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿// Copyright (c) RaaLabs. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System.Diagnostics.CodeAnalysis;
 using RaaLabs.Edge.Modules.EventHandling;
 using RaaLabs.Edge.Modules.EdgeHub;
@@ -11,11 +13,6 @@ namespace RaaLabs.Edge.IdentityMapper
     {
         static void Main(string[] args)
         {
-            Run().Wait();
-        }
-
-        private static async Task Run()
-        {
             var application = new ApplicationBuilder()
                 .WithModule<EventHandling>()
                 .WithModule<EdgeHub>()
@@ -24,7 +21,7 @@ namespace RaaLabs.Edge.IdentityMapper
                 .WithType<TimeSeriesMapper>()
                 .Build();
 
-            await application.Run();
+            application.Run().Wait();
         }
     }
 }
