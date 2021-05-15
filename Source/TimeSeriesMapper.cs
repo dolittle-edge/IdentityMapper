@@ -1,6 +1,8 @@
 ﻿// Copyright (c) RaaLabs. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
+
 namespace RaaLabs.Edge.IdentityMapper
 {
     public class TimeSeriesMapper
@@ -12,7 +14,7 @@ namespace RaaLabs.Edge.IdentityMapper
             _identities = identities;
         }
 
-        public string GetTimeSeriesFor(string source, string tag)
+        public Guid GetTimeSeriesFor(string source, string tag)
         {
             ThrowIfMissingSystem(source);
             ThrowIfTagIsMissingInSystem(source, tag);
