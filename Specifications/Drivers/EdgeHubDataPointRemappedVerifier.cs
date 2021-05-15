@@ -11,7 +11,7 @@ namespace RaaLabs.Edge.IdentityMapper.Specs.Drivers
         {
             float actualValue = @event.Value;
             var expectedValue = float.Parse(row["Value"], CultureInfo.InvariantCulture.NumberFormat);
-            @event.Timeseries.Should().Be(row["Timeseries"]);
+            @event.TimeSeries.Should().Be(row["TimeSeries"]);
             actualValue.Should().BeApproximately(expectedValue, 0.0001f);
         }
     }

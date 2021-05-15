@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using RaaLabs.Edge.Modules.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
@@ -14,8 +15,8 @@ namespace RaaLabs.Edge.IdentityMapper
         public Identities(IDictionary<string, TimeSeriesByTag> configuration) : base(configuration) { }
     }
 
-    public class TimeSeriesByTag : ReadOnlyDictionary<string, string>
+    public class TimeSeriesByTag : ReadOnlyDictionary<string, Guid>
     {
-        public TimeSeriesByTag(IDictionary<string, string> configuration) : base(configuration) { }
+        public TimeSeriesByTag(IDictionary<string, Guid> configuration) : base(configuration) { }
     }
 }

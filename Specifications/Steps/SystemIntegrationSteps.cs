@@ -11,6 +11,7 @@ using RaaLabs.Edge.IdentityMapper.Events;
 using RaaLabs.Edge.Modules.EdgeHub;
 using Autofac;
 using System.Globalization;
+using System;
 
 namespace RaaLabs.Edge.IdentityMapper.Specs.StepDefinitions
 {
@@ -27,7 +28,7 @@ namespace RaaLabs.Edge.IdentityMapper.Specs.StepDefinitions
         [Given(@"a config file with the following mapping")]
         public void GivenAConfigFileWithThefollowingMapping(Table table)
         {
-            var mappings = table.Rows.Select(row => (Source: row["Source"], From: row["From"], To: row["To"]));
+            var mappings = table.Rows.Select(row => (Source: row["Source"], From: row["From"], To: Guid.Parse(row["To"])));
             var identitiesBySource = mappings.GroupBy(row => row.Source);
             var identitiesSource = identitiesBySource.ToDictionary(entry => entry.Key,
                                                                 entry => entry.ToDictionary(entryForSource => entryForSource.From,

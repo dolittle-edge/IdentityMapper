@@ -13,14 +13,14 @@ namespace RaaLabs.Edge.IdentityMapper.Specs.StepDefinitions
     public class TimeSeriesMapperSteps
     {
         private readonly TimeSeriesMapper _mapper;
-        private string _mappedValue;
-        private Dictionary<(string, string), string> _existingValues;
+        private Guid _mappedValue;
+        private Dictionary<(string, string), Guid> _existingValues;
         private HashSet<(string, string)> _nonExistingValues;
         private Exception _exception;
         public TimeSeriesMapperSteps(TimeSeriesMapper mapper)
         {
             _mapper = mapper;
-            _existingValues = new Dictionary<(string, string), string>();
+            _existingValues = new Dictionary<(string, string), Guid>();
             _nonExistingValues = new HashSet<(string, string)>();
         }
 

@@ -1,6 +1,6 @@
 # IdentityMapper
 
-[![.NET Core](https://github.com/RaaLabs/IdentityMapper/actions/workflows/dotnet-core.yml/badge.svg)](https://github.com/RaaLabs/IdentityMapper/actions/workflows/dotnet-core.yml)
+[![.NET Core](https://github.com/RaaLabs/IdentityMapper/actions/workflows/dotnet.yml/badge.svg)](https://github.com/RaaLabs/IdentityMapper/actions/workflows/dotnet.yml)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=RaaLabs_IdentityMapper&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=RaaLabs_IdentityMapper)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=RaaLabs_IdentityMapper&metric=coverage)](https://sonarcloud.io/dashboard?id=RaaLabs_IdentityMapper)
 

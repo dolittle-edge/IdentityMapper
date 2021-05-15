@@ -6,6 +6,7 @@ using TechTalk.SpecFlow;
 using System.Linq;
 using BoDi;
 using Serilog;
+using System;
 
 namespace RaaLabs.Edge.IdentityMapper.Specs.StepDefinitions
 {
@@ -24,7 +25,7 @@ namespace RaaLabs.Edge.IdentityMapper.Specs.StepDefinitions
         [Given(@"mappings between the following tags")]
         public void GivenMappingsBetweenTheFollowingTags(Table table)
         {
-            var mappings = table.Rows.Select(row => (Source: row["Source"], From: row["From"], To: row["To"]));
+            var mappings = table.Rows.Select(row => (Source: row["Source"], From: row["From"], To: Guid.Parse(row["To"])));
             var identitiesBySource = mappings.GroupBy(row => row.Source);
             var identitiesSource = identitiesBySource.ToDictionary(entry => entry.Key,
                                                                 entry => entry.ToDictionary(entryForSource => entryForSource.From,
@@ -40,7 +41,7 @@ namespace RaaLabs.Edge.IdentityMapper.Specs.StepDefinitions
         [Given(@"timeseries mapper with the following mapping")]
         public void GivenTimeseriesMapperWithTheFollowingMapping(Table table)
         {
-            var mappings = table.Rows.Select(row => (Source: row["Source"], From: row["From"], To: row["To"]));
+            var mappings = table.Rows.Select(row => (Source: row["Source"], From: row["From"], To: Guid.Parse(row["To"])));
             var identitiesBySource = mappings.GroupBy(row => row.Source);
             var identitiesSource = identitiesBySource.ToDictionary(entry => entry.Key,
                                                                 entry => entry.ToDictionary(entryForSource => entryForSource.From,
