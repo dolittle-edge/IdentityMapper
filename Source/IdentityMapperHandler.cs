@@ -40,13 +40,13 @@ namespace RaaLabs.Edge.IdentityMapper
 
         private EdgeHubDataPointRemapped RemapDataPoint(EdgeHubDataPointReceived incoming)
         {
-            var tag = _mapper.GetTimeSeriesFor(incoming.Source, incoming.Tag);
+            var timeseries = _mapper.GetTimeSeriesFor(incoming.Source, incoming.Tag);
 
             return new EdgeHubDataPointRemapped
             {
-                Timestamp = incoming.Timestamp,
+                TimeSeries = timeseries,
                 Value = incoming.Value,
-                Timeseries = tag,
+                Timestamp = incoming.Timestamp,
             };
         }
     }
