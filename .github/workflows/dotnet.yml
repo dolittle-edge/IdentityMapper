@@ -45,6 +45,7 @@ jobs:
         password: ${{ secrets.RAAEDGE_ACR_PASSWORD }}
 
     - name: Docker Build
+      if: ${{ steps.context.outputs.should-publish == 'false' }}
       shell: bash
       run: |
           docker build --no-cache -f $GITHUB_WORKSPACE/Source/Dockerfile -t ${{ env.DOCKER_HUB_REPO }}:${{ github.sha }} .
@@ -66,8 +67,9 @@ jobs:
     - name: Docker push
       if: ${{ steps.context.outputs.should-publish == 'true' && env.DOCKER_HUB_REPO != '' }}
       run: |
-          docker build --no-cache -f $GITHUB_WORKSPACE/Source/Dockerfile -t ${{ env.DOCKER_HUB_REPO }}:${{ steps.increment-version.outputs.next-version }} .
+          docker build --no-cache -f $GITHUB_WORKSPACE/Source/Dockerfile -t ${{ env.DOCKER_HUB_REPO }}:${{ steps.increment-version.outputs.next-version }} -t ${{ env.DOCKER_HUB_REPO }}:latest .
           docker push ${{ env.DOCKER_HUB_REPO }}:${{ steps.increment-version.outputs.next-version }}
+          docker push ${{ env.DOCKER_HUB_REPO }}:latest
         
     - name: Create GitHub Release
       uses: dolittle/github-release-action@v1
