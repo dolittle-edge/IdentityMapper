@@ -44,17 +44,17 @@ jobs:
         username: ${{ secrets.RAAEDGE_ACR_USERNAME }}
         password: ${{ secrets.RAAEDGE_ACR_PASSWORD }}
 
-    - name: Docker Build
-      if: ${{ steps.context.outputs.should-publish == 'false' }}
-      shell: bash
-      run: |
-          docker build --no-cache -f $GITHUB_WORKSPACE/Source/Dockerfile -t ${{ env.DOCKER_HUB_REPO }}:${{ github.sha }} .
-
     - name: Establish context
       id: context
       uses: dolittle/establish-context-action@v2
       with:
         prerelease-branches: ${{ env.PRERELEASE_BRANCHES }}
+
+    - name: Docker Build
+      if: ${{ steps.context.outputs.should-publish == 'false' }}
+      shell: bash
+      run: |
+          docker build --no-cache -f $GITHUB_WORKSPACE/Source/Dockerfile -t ${{ env.DOCKER_HUB_REPO }}:${{ github.sha }} .
 
     - name: Increment version
       id: increment-version
